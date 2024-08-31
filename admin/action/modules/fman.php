@@ -731,9 +731,7 @@ if ($continue) {
         // icon
         $iteminfo = pathinfo($item);
 
-        if (!isset($iteminfo['extension'])) {
-            $iteminfo['extension'] = '';
-        }
+        $iteminfo['extension'] ??= '';
 
         $ext = strtolower($iteminfo['extension']);
         $image = false;
