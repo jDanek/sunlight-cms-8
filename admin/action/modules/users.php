@@ -136,26 +136,14 @@ if (User::hasPrivilege('admingroups')) {
 }
 
 // message
-switch ($msg) {
-    case 1:
-        $message = Message::ok(_lang('global.done'));
-        break;
-    case 2:
-        $message = Message::warning(_lang('admin.users.groups.specialgroup.delnotice'));
-        break;
-    case 3:
-        $message = Message::error(_lang('global.disallowed'));
-        break;
-    case 4:
-        $message = Message::error(_lang('global.badgroup'));
-        break;
-    case 5:
-        $message = Message::warning(_lang('global.baduser'));
-        break;
-    default:
-        $message = '';
-        break;
-}
+$message = match ($msg) {
+    1 => Message::ok(_lang('global.done')),
+    2 => Message::warning(_lang('admin.users.groups.specialgroup.delnotice')),
+    3 => Message::error(_lang('global.disallowed')),
+    4 => Message::error(_lang('global.badgroup')),
+    5 => Message::warning(_lang('global.baduser')),
+    default => '',
+};
 
 $modules = [
     'users-edit' => [

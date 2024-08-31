@@ -275,22 +275,15 @@ abstract class Core
 
         // set trusted proxies
         if (isset($options['trusted_proxies'], $options['trusted_proxy_headers'])) {
-            switch ($options['trusted_proxy_headers']) {
-                case 'forwarded':
-                    $trustedProxyHeaders = TrustedProxies::HEADER_FORWARDED;
-                    break;
-                case 'x-forwarded':
-                    $trustedProxyHeaders = TrustedProxies::HEADER_X_FORWARDED_ALL;
-                    break;
-                case 'all':
-                    $trustedProxyHeaders = TrustedProxies::HEADER_FORWARDED | TrustedProxies::HEADER_X_FORWARDED_ALL;
-                    break;
-                default:
-                    self::fail(
-                        'Konfigurační volba "trusted_proxy_headers" má neplatnou hodnotu',
-                        'The configuration option "trusted_proxy_headers" has an invalid value'
-                    );
-            }
+            $trustedProxyHeaders = match ($options['trusted_proxy_headers']) {
+                'forwarded' => TrustedProxies::HEADER_FORWARDED,
+                'x-forwarded' => TrustedProxies::HEADER_X_FORWARDED_ALL,
+                'all' => TrustedProxies::HEADER_FORWARDED | TrustedProxies::HEADER_X_FORWARDED_ALL,
+                default => self::fail(
+                    'Konfigurační volba "trusted_proxy_headers" má neplatnou hodnotu',
+                    'The configuration option "trusted_proxy_headers" has an invalid value'
+                ),
+            };
 
             RequestInfo::setTrustedProxies(new TrustedProxies((array) $options['trusted_proxies'], $trustedProxyHeaders));
         }

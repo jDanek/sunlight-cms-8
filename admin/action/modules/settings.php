@@ -385,18 +385,11 @@ foreach ($editable_settings as $settings_category => $settings_category_data) {
             if (isset($item['choices'])) {
                 $input = Form::select($input_name, $item['choices'], $value, $inputAttrs);
             } else {
-                switch ($item['format']) {
-                    case 'int':
-                        $input = Form::input('number', $input_name, $value, $inputAttrs);
-                        break;
-                    case 'bool':
-                        $input = Form::input('checkbox', $input_name, $value, $inputAttrs += ['checked' => (bool) $value]);
-                        break;
-                    case 'html':
-                    default:
-                        $input = Form::input('text', $input_name, $value, $inputAttrs, $item['format'] !== 'html');
-                        break;
-                }
+                $input = match ($item['format']) {
+                    'int' => Form::input('number', $input_name, $value, $inputAttrs),
+                    'bool' => Form::input('checkbox', $input_name, $value, $inputAttrs += ['checked' => (bool)$value]),
+                    default => Form::input('text', $input_name, $value, $inputAttrs, $item['format'] !== 'html'),
+                };
             }
         }  else {
             $input = $item['input'];

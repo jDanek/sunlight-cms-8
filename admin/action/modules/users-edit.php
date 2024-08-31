@@ -338,12 +338,8 @@ if ($continue) {
   ';
     }
 } else {
-    switch ($errno) {
-        case 1:
-            $output .= Message::warning(_lang('global.baduser'));
-            break;
-        default:
-            $output .= Message::error(_lang('global.disallowed'));
-            break;
-    }
+    $output .= match ($errno) {
+        1 => Message::warning(_lang('global.baduser')),
+        default => Message::error(_lang('global.disallowed')),
+    };
 }

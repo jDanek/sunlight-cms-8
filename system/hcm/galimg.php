@@ -31,17 +31,11 @@ return function ($gallery = null, $type = 'new', $thumbnail_size = null, $limit 
     }
 
     // order
-    switch ($type) {
-        case 'random':
-            $order = 'RAND()';
-            break;
-        case 'order':
-            $order = 'ord ASC';
-            break;
-        case 'new':
-        default:
-            $order = 'id DESC';
-    }
+    $order = match ($type) {
+        'random' => 'RAND()',
+        'order' => 'ord ASC',
+        default => 'id DESC',
+    };
 
     // list images
     $result = '';

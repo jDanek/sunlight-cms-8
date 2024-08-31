@@ -177,16 +177,11 @@ class SqlDumper
 
                 // cast
                 if ($value !== null) {
-                    switch ($columnOptions[0]) {
-                        case 'integer':
-                            $value = (int) $value;
-                            break;
-                        case 'string':
-                            $value = (string) $value;
-                            break;
-                        default:
-                            throw new \LogicException(sprintf('Invalid column type "%s"', $columnOptions[0]));
-                    }
+                    $value = match ($columnOptions[0]) {
+                        'integer' => (int)$value,
+                        'string' => (string)$value,
+                        default => throw new \LogicException(sprintf('Invalid column type "%s"', $columnOptions[0])),
+                    };
                 }
 
                 // add to row

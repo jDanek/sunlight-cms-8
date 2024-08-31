@@ -901,22 +901,15 @@ abstract class User
      */
     static function getLoginMessage(int $code): ?Message
     {
-        switch ($code) {
-            case self::LOGIN_FAILURE:
-                return Message::warning(_lang('login.failure'));
-            case self::LOGIN_SUCCESS:
-                return Message::ok(_lang('login.success'));
-            case self::LOGIN_BLOCKED:
-                return Message::warning(_lang('login.blocked.message'));
-            case self::LOGIN_REMOVED:
-                return Message::ok(_lang('login.selfremove'));
-            case self::LOGIN_ATTEMPTS_EXCEEDED:
-                return Message::warning(_lang('login.attemptlimit', ['%minutes%' => _num(Settings::get('maxloginexpire') / 60)]));
-            case self::LOGIN_XSRF_FAILURE:
-                return Message::error(_lang('xsrf.msg'));
-            default:
-                return Extend::fetch('user.login.message', ['code' => $code]);
-        }
+        return match ($code) {
+            self::LOGIN_FAILURE => Message::warning(_lang('login.failure')),
+            self::LOGIN_SUCCESS => Message::ok(_lang('login.success')),
+            self::LOGIN_BLOCKED => Message::warning(_lang('login.blocked.message')),
+            self::LOGIN_REMOVED => Message::ok(_lang('login.selfremove')),
+            self::LOGIN_ATTEMPTS_EXCEEDED => Message::warning(_lang('login.attemptlimit', ['%minutes%' => _num(Settings::get('maxloginexpire') / 60)])),
+            self::LOGIN_XSRF_FAILURE => Message::error(_lang('xsrf.msg')),
+            default => Extend::fetch('user.login.message', ['code' => $code]),
+        };
     }
 
     /**

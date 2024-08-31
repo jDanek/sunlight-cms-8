@@ -201,26 +201,13 @@ final class ImageTransformer
         $outputW = $options['w'];
         $outputH = $options['h'];
 
-        switch ($options['mode']) {
-            case self::RESIZE_FILL:
-                $scale = max(1 / $image->width * $outputW, 1 / $image->height * $outputH);
-                break;
-
-            case self::RESIZE_FIT:
-                $scale = min(1 / $image->width * $outputW, 1 / $image->height * $outputH);
-                break;
-
-            case self::RESIZE_FIT_X:
-                $scale = 1 / $image->width * $outputW;
-                break;
-
-            case self::RESIZE_FIT_Y:
-                $scale = 1 / $image->height * $outputH;
-                break;
-
-            default:
-                throw new ImageException(ImageException::INVALID_RESIZE_MODE);
-        }
+        $scale = match ($options['mode']) {
+            self::RESIZE_FILL => max(1 / $image->width * $outputW, 1 / $image->height * $outputH),
+            self::RESIZE_FIT => min(1 / $image->width * $outputW, 1 / $image->height * $outputH),
+            self::RESIZE_FIT_X => 1 / $image->width * $outputW,
+            self::RESIZE_FIT_Y => 1 / $image->height * $outputH,
+            default => throw new ImageException(ImageException::INVALID_RESIZE_MODE),
+        };
 
         // calculate dimensions
         $sourceX = 0;
@@ -271,24 +258,24 @@ final class ImageTransformer
             $sourceSize -= $sourceOffset;
             $targetSize = $outputSize;
 
-            switch ($align) {
-                case self::ALIGN_LOW: $sourceCoord = 0; break;
-                case self::ALIGN_CENTER: $sourceCoord = self::intRound($sourceOffset / 2); break;
-                case self::ALIGN_HIGH: $sourceCoord = $sourceOffset; break;
-                default: throw new ImageException(ImageException::INVALID_ALIGN);
-            }
+            $sourceCoord = match ($align) {
+                self::ALIGN_LOW => 0,
+                self::ALIGN_CENTER => self::intRound($sourceOffset / 2),
+                self::ALIGN_HIGH => $sourceOffset,
+                default => throw new ImageException(ImageException::INVALID_ALIGN),
+            };
         } elseif ($targetSize < $outputSize) {
             // size too small
             if ($pad) {
                 // pad with empty space
                 $offset = $outputSize - $targetSize;
 
-                switch ($align) {
-                    case self::ALIGN_LOW: $targetCoord = 0; break;
-                    case self::ALIGN_CENTER: $targetCoord = self::intRound($offset / 2); break;
-                    case self::ALIGN_HIGH: $targetCoord = $offset; break;
-                    default: throw new ImageException(ImageException::INVALID_ALIGN);
-                }
+                $targetCoord = match ($align) {
+                    self::ALIGN_LOW => 0,
+                    self::ALIGN_CENTER => self::intRound($offset / 2),
+                    self::ALIGN_HIGH => $offset,
+                    default => throw new ImageException(ImageException::INVALID_ALIGN),
+                };
             } else {
                 // shrink output
                 $outputSize = $targetSize;

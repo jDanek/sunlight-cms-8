@@ -196,23 +196,16 @@ abstract class Zip
     private static function getSubpath(int $mode, string $path, bool|int $lastSlashPos, int $prefixLen, ?string $excludePrefix, int $excludePrefixLen): ?string
     {
         // determine subpath
-        switch ($mode) {
-            case self::PATH_FULL:
-                $subpath = $lastSlashPos !== false
-                    ? substr($path, 0, $lastSlashPos)
-                    : null;
-                break;
-            case self::PATH_SUB:
-                $subpath = $lastSlashPos !== false && $lastSlashPos > $prefixLen
-                    ? substr($path, $prefixLen, $lastSlashPos - $prefixLen)
-                    : null;
-                break;
-            case self::PATH_NONE:
-                $subpath = null;
-                break;
-            default:
-                throw new \InvalidArgumentException('Invalid mode');
-        }
+        $subpath = match ($mode) {
+            self::PATH_FULL => $lastSlashPos !== false
+                ? substr($path, 0, $lastSlashPos)
+                : null,
+            self::PATH_SUB => $lastSlashPos !== false && $lastSlashPos > $prefixLen
+                ? substr($path, $prefixLen, $lastSlashPos - $prefixLen)
+                : null,
+            self::PATH_NONE => null,
+            default => throw new \InvalidArgumentException('Invalid mode'),
+        };
 
         // exclude prefix
         if (

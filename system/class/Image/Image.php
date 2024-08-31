@@ -104,27 +104,13 @@ final class Image
 
         error_clear_last();
 
-        switch ($format) {
-            case ImageFormat::JPG:
-            case ImageFormat::JPEG:
-                $result = @imagejpeg($this->resource, $filename, $options['jpg_quality'] ?? 80);
-                break;
-
-            case ImageFormat::PNG:
-                $result = @imagepng($this->resource, $filename, $options['png_quality'] ?? 9, $options['png_filters'] ?? null);
-                break;
-
-            case ImageFormat::GIF:
-                $result = @imagegif($this->resource, $filename);
-                break;
-
-            case ImageFormat::WEBP:
-                $result = @imagewebp($this->resource, $filename, $options['webp_quality'] ?? 80);
-                break;
-
-            default:
-                throw new ImageException(ImageException::FORMAT_NOT_SUPPORTED);
-        }
+        $result = match ($format) {
+            ImageFormat::JPG, ImageFormat::JPEG => @imagejpeg($this->resource, $filename, $options['jpg_quality'] ?? 80),
+            ImageFormat::PNG => @imagepng($this->resource, $filename, $options['png_quality'] ?? 9, $options['png_filters'] ?? null),
+            ImageFormat::GIF => @imagegif($this->resource, $filename),
+            ImageFormat::WEBP => @imagewebp($this->resource, $filename, $options['webp_quality'] ?? 80),
+            default => throw new ImageException(ImageException::FORMAT_NOT_SUPPORTED),
+        };
 
         if (!$result) {
             throw new ImageException(ImageException::WRITE_FAILED, null, error_get_last()['message'] ?? null);
