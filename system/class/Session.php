@@ -4,12 +4,9 @@ namespace Sunlight;
 
 abstract class Session
 {
-    /** @var string */
-    static $cookieName = 'sl_session';
-    /** @var bool|null */
-    private static $enabled;
-    /** @var string|null */
-    private static $previousId;
+    static string $cookieName = 'sl_session';
+    private static ?bool $enabled = null;
+    private static ?string $previousId = null;
 
     static function init(bool $enabled): void
     {

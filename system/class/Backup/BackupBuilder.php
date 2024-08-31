@@ -17,7 +17,7 @@ use Sunlight\Util\TemporaryFile;
 class BackupBuilder
 {
     /** @var string[] */
-    private $staticPathList = [
+    private array $staticPathList = [
         'admin',
         'system',
         'vendor',
@@ -31,7 +31,7 @@ class BackupBuilder
     ];
 
     /** @var string[] */
-    private $emptyDirPathList = [
+    private array $emptyDirPathList = [
         'images/thumb',
         'system/backup',
         'system/cache',
@@ -39,7 +39,7 @@ class BackupBuilder
     ];
 
     /** @var array[] name => paths */
-    private $dynamicPathMap = [
+    private array $dynamicPathMap = [
         'plugins' => ['plugins'],
         'upload' => ['upload'],
         'images_user' => [
@@ -55,10 +55,10 @@ class BackupBuilder
     ];
 
     /** @var bool[] name => true */
-    private $disabledDynamicPathMap = [];
+    private array $disabledDynamicPathMap = [];
 
     /** @var bool[] name => true */
-    private $fullBackupOptionalDynamicPathMap = [
+    private array $fullBackupOptionalDynamicPathMap = [
         'upload' => true,
         'images_user' => true,
         'images_articles' => true,
@@ -66,23 +66,20 @@ class BackupBuilder
     ];
 
     /** @var array[] pattern list */
-    private $includedPathMap = [];
+    private array $includedPathMap = [];
 
     /** @var array[] pattern list */
-    private $excludedPathMap = [
+    private array $excludedPathMap = [
         'system/backup/*' => ['static' => true, 'dynamic' => true],
         'system/cache/*' => ['static' => true, 'dynamic' => true],
         'system/tmp/*' => ['static' => true, 'dynamic' => true],
     ];
 
-    /** @var bool */
-    private $fullBackup = true;
+    private bool $fullBackup = true;
 
-    /** @var bool */
-    private $databaseDumpEnabled = true;
+    private bool $databaseDumpEnabled = true;
 
-    /** @var bool */
-    private $configFileEnabled = true;
+    private bool $configFileEnabled = true;
 
     function isFullBackup(): bool
     {

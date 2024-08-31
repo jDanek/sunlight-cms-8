@@ -11,10 +11,8 @@ use Sunlight\Database\Database as DB;
  */
 class SimpleTreeFilter implements TreeFilterInterface
 {
-    /** @var array */
-    private $filter;
-    /** @var string */
-    private $sql;
+    private array $filter;
+    private string $sql;
 
     /**
      * Filter example:

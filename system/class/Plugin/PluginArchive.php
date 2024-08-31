@@ -14,16 +14,12 @@ class PluginArchive
     /** Overwrite any existing plugins */
     const MODE_OVERWRITE_EXISTING = 2;
 
-    /** @var PluginManager */
-    private $manager;
-    /** @var \ZipArchive */
-    private $zip;
-    /** @var string */
-    private $path;
-    /** @var bool */
-    private $open = false;
+    private PluginManager $manager;
+    private \ZipArchive $zip;
+    private string $path;
+    private bool $open = false;
     /** @var array<string, array<string, string>> type => name => archive path */
-    private $plugins;
+    private array $plugins;
 
     function __construct(PluginManager $manager, string $path)
     {

@@ -12,18 +12,13 @@ use Sunlight\Util\Json;
  */
 class Repository
 {
-    /** @var string */
-    private $composerJsonPath;
-    /** @var string|null */
-    private $directory;
-    /** @var \stdClass|null */
-    private $package;
-    /** @var string|null */
-    private $vendorPath;
+    private string $composerJsonPath;
+    private ?string $directory = null;
+    private ?\stdClass $package = null;
+    private ?string $vendorPath = null;
     /** @var \stdClass[]|null name-indexed */
-    private $installedPackages;
-    /** @var array|null */
-    private $classMap;
+    private ?array $installedPackages = null;
+    private ?array $classMap = null;
 
     function __construct(string $composerJsonPath)
     {

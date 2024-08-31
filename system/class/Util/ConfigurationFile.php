@@ -7,12 +7,9 @@ namespace Sunlight\Util;
  */
 class ConfigurationFile implements \ArrayAccess
 {
-    /** @var string */
-    private $path;
-    /** @var array */
-    private $defaults;
-    /** @var array|null */
-    private $data;
+    private string $path;
+    private array $defaults;
+    private ?array $data = null;
 
     function __construct(string $path, array $defaults = [])
     {

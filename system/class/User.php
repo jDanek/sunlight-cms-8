@@ -58,11 +58,10 @@ abstract class User
     /** Login status - XSRF failure */
     const LOGIN_XSRF_FAILURE = 5;
 
-    /** @var bool */
-    private static $initialized = false;
+    private static bool $initialized = false;
 
-    /** @var array */
-    private static $privilegeMap = [
+    /** @var array<string, bool> */
+    private static array $privilegeMap = [
         'administration' => true,
         'adminsettings' => true,
         'adminplugins' => true,
@@ -109,10 +108,10 @@ abstract class User
     ];
 
     /** @var array|null data from user table (if logged in) */
-    static $data;
+    static ?array $data = null;
 
     /** @var array data from group table */
-    static $group;
+    static array $group;
 
     static function init(): void
     {
@@ -425,9 +424,8 @@ abstract class User
      * @param string $path the patch to check
      * @param bool $isFile treat path as a file path
      * @param bool $getPath return the normalized path if successful 1/0
-     * @return bool|string
      */
-    static function checkPath(string $path, bool $isFile, bool $getPath = false)
+    static function checkPath(string $path, bool $isFile, bool $getPath = false): bool|string
     {
         if (self::hasPrivilege('fileaccess')) {
             $path = Filesystem::resolvePath($path, $isFile, self::getHomeDir(true));
@@ -603,10 +601,10 @@ abstract class User
      * @param string|null $joinUserIdColumn name of user ID column to use for joining or NULL (= don't join)
      * @param string $prefix user data column prefix
      * @param string $alias alias of the joined user table
-     * @param mixed $emptyValue column value that signifies "no user"
+     * @param mixed|int $emptyValue column value that signifies "no user"
      * @return array{columns: string[], column_list: string, joins: string, alias: string, prefix: string}
      */
-    static function createQuery(?string $joinUserIdColumn = null, string $prefix = 'user_', string $alias = 'u', $emptyValue = -1): array
+    static function createQuery(?string $joinUserIdColumn = null, string $prefix = 'user_', string $alias = 'u', mixed $emptyValue = -1): array
     {
         $groupAlias = "{$alias}g";
 

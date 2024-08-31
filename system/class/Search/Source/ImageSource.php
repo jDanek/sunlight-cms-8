@@ -12,7 +12,7 @@ use Sunlight\User;
 
 class ImageSource extends FulltextSource
 {
-    private $resizeOptions;
+    private array $resizeOptions;
 
     function __construct(string $key)
     {

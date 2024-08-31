@@ -5,9 +5,8 @@ namespace SunlightExtend\Devkit\Component;
 class SqlLogger
 {
     /** @var array[] */
-    private $log = [];
-    /** @var float|null */
-    private $timerStartedAt = 0;
+    private array $log = [];
+    private float|int|null $timerStartedAt = 0;
 
     /**
      * Set the timer

@@ -4,14 +4,11 @@ namespace Sunlight\Slugify;
 
 class Slugify
 {
-    /** @var self|null */
-    private static $inst;
+    private static ?Slugify $inst = null;
     /** @var string[] */
-    private $rules = [];
-    /** @var RuleProviderInterface */
-    private $provider;
-    /** @var array */
-    private $options = [
+    private array $rules = [];
+    private RuleProviderInterface $provider;
+    private array $options = [
         'regexp' => '/([^A-Za-z0-9]|-)+/',
         'separator' => '-',
         'lowercase' => true,

@@ -6,16 +6,11 @@ use Sunlight\Database\Database as DB;
 
 class TreeManager
 {
-    /** @var string */
-    private $table;
-    /** @var string */
-    private $idColumn;
-    /** @var string */
-    private $parentColumn;
-    /** @var string */
-    private $levelColumn;
-    /** @var string */
-    private $depthColumn;
+    private string $table;
+    private string $idColumn;
+    private string $parentColumn;
+    private string $levelColumn;
+    private string $depthColumn;
 
     /**
      * @param string $table table name (no prefix)
@@ -190,7 +185,7 @@ class TreeManager
      * @param callable $contextUpdater callback(context, current_node, current_changeset) should return a new context or null
      * @param bool $getChangesetMap only return a changeset map, don't call {@see Database::updateSetMulti()}
      */
-    function propagate(array $flatTree, $context, callable $propagator, callable $contextUpdater, bool $getChangesetMap = false): ?array
+    function propagate(array $flatTree, mixed $context, callable $propagator, callable $contextUpdater, bool $getChangesetMap = false): ?array
     {
         $stack = [];
         $contextLevel = 0;

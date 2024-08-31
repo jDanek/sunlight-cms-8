@@ -12,10 +12,9 @@ use Sunlight\Plugin\PluginOptionNormalizer;
 
 abstract class PluginType
 {
-    /** @var Resolver|null */
-    private $optionResolver;
-    /** @var Resolver|null */
-    private $fallbackOptionResolver;
+    private ?Resolver $optionResolver = null;
+
+    private ?Resolver $fallbackOptionResolver = null;
 
     abstract function getName(): string;
 

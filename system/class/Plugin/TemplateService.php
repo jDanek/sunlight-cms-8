@@ -46,7 +46,7 @@ abstract class TemplateService
      *
      * @param string|TemplatePlugin $template
      */
-    static function composeUid($template, ?string $layout = null, ?string $slot = null): ?string
+    static function composeUid(TemplatePlugin|string $template, ?string $layout = null, ?string $slot = null): ?string
     {
         $uid = $template instanceof TemplatePlugin
             ? $template->getName()

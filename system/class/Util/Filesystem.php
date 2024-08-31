@@ -9,7 +9,7 @@ abstract class Filesystem
     private const UNSAFE_EXT_REGEX = '{php\d*?|[ps]html|asp|py|cgi}Ai';
 
     /** @var array<string, true>|null */
-    private static $allowedExtMap;
+    private static ?array $allowedExtMap = null;
 
     /**
      * Create a temporary file in system/tmp/

@@ -7,18 +7,16 @@ use Sunlight\GenericTemplates;
 class SelectOption
 {
     /** @var array-key */
-    public $value;
-    /** @var string */
-    public $label;
+    public string|int $value;
+    public string $label;
     /** @var array<string, scalar|null> */
-    public $attrs;
-    /** @var bool */
-    public $doubleEncodeLabel;
+    public array $attrs;
+    public bool $doubleEncodeLabel;
 
     /**
      * @param array-key $value
      */
-    function __construct($value, ?string $label = null, array $attrs = [], bool $doubleEncodeLabel = true)
+    function __construct(int|string $value, ?string $label = null, array $attrs = [], bool $doubleEncodeLabel = true)
     {
         $this->value = $value;
         $this->label = $label ?? $value;

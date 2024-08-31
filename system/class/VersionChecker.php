@@ -9,11 +9,9 @@ use Sunlight\Util\HttpClientException;
 
 class VersionChecker
 {
-    /** @var array|null */
-    private static $data;
+    private static ?array $data = null;
 
-    /** @var bool */
-    private static $loaded = false;
+    private static bool $loaded = false;
 
     static function check(): ?array
     {

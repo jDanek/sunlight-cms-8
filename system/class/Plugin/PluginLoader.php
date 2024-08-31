@@ -16,10 +16,9 @@ class PluginLoader
 {
     private const PLUGIN_DIR_PATTERN = '{' . Plugin::NAME_PATTERN . '$}AD';
 
-    /** @var PluginConfigStore */
-    private $configStore;
+    private PluginConfigStore $configStore;
     /** @var array<string, PluginType> */
-    private $types;
+    private array $types;
 
     /**
      * @param array<string, PluginType> $types

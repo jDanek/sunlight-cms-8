@@ -9,12 +9,9 @@ use Sunlight\Core;
  */
 class LocalizationDirectory extends LocalizationDictionary
 {
-    /** @var string */
-    private $dir;
-    /** @var array|null */
-    private $availableLanguages;
-    /** @var bool */
-    private $isLoaded = false;
+    private string $dir;
+    private ?array $availableLanguages;
+    private bool $isLoaded = false;
 
     /**
      * @param string $dir path to the directory containing the localization dictionaries (without a trailing slash)

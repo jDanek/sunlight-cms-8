@@ -10,7 +10,7 @@ class PluginHcmHandler
     /**
      * @param callable $callback
      */
-    function __construct($callback)
+    function __construct(callable $callback)
     {
         $this->callback = $callback;
     }

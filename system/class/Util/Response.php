@@ -2,6 +2,7 @@
 
 namespace Sunlight\Util;
 
+use JetBrains\PhpStorm\NoReturn;
 use Kuria\Debug\Output;
 use Kuria\Url\Url;
 use Sunlight\Core;
@@ -26,6 +27,7 @@ abstract class Response
      * @param string|null $url URL to return to, defaults to {@see Response::getReturnUrl()}
      * @return never-return
      */
+    #[NoReturn]
     static function redirectBack(?string $url = null): void
     {
         if ($url === null) {
@@ -100,6 +102,7 @@ abstract class Response
      * @param string|null $filename custom file name
      * @return never-return
      */
+    #[NoReturn]
     static function downloadFile(string $filepath, ?string $filename = null): void
     {
         self::ensureHeadersNotSent();
@@ -129,6 +132,7 @@ abstract class Response
      * 
      * @return never-return
      */
+    #[NoReturn]
     static function json($data, int $flags = Json::DEFAULT, int $depth = Json::DEFAULT_DEPTH): void
     {
         header('Content-Type: application/json');

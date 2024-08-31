@@ -7,8 +7,7 @@ use Sunlight\Util\Filesystem;
 
 class PluginConfigStore
 {
-    /** @var string */
-    private $storePath;
+    private string $storePath;
 
     function __construct()
     {

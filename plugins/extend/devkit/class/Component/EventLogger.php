@@ -18,7 +18,7 @@ class EventLogger
      *
      * @var array
      */
-    private $log = [];
+    private array $log = [];
 
     /**
      * Log extend event

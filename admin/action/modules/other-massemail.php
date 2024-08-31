@@ -184,7 +184,7 @@ $output .= '
 
 <tr>
     <td></td>
-    <td>' . Form::input('submit', null, _lang('global.send')) . '  <label>' . Form::input('checkbox', 'maillist', '1', ['checked' => (bool) Form::loadCheckbox('maillist')]) . ' ' . _lang('admin.other.massemail.maillist') . '</label></td>
+    <td>' . Form::input('submit', null, _lang('global.send')) . '  <label>' . Form::input('checkbox', 'maillist', '1', ['checked' => Form::loadCheckbox('maillist')]) . ' ' . _lang('admin.other.massemail.maillist') . '</label></td>
 </tr>
 
 </table>

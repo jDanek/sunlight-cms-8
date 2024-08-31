@@ -12,7 +12,7 @@ abstract class Extend
      *
      * @param callable $callback
      */
-    static function reg(string $event, $callback, int $priority = 0): void
+    static function reg(string $event, callable $callback, int $priority = 0): void
     {
         Core::$eventEmitter->on($event, $callback, $priority);
     }
@@ -33,7 +33,7 @@ abstract class Extend
      * Create normalized event arguments
      *
      * @param string &$output output variable reference
-     * @param array|null $args array with additional arguments
+     * @param array $args array with additional arguments
      */
     static function args(string &$output, array $args = []): array
     {
@@ -54,9 +54,9 @@ abstract class Extend
      * Trigger an event and fetch a value
      *
      * @param array $args ('value' is added automatically)
-     * @param mixed $value initial value
+     * @param mixed|null $value initial value
      */
-    static function fetch(string $event, array $args = [], $value = null)
+    static function fetch(string $event, array $args = [], mixed $value = null)
     {
         $args['value'] = &$value;
         self::call($event, $args);

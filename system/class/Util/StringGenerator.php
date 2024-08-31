@@ -6,7 +6,7 @@ use Sunlight\Core;
 
 abstract class StringGenerator
 {
-    private static $uid = 0;
+    private static int $uid = 0;
 
     /**
      * Generate a version 4 universally unique identifier

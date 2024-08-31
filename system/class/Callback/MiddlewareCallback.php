@@ -7,7 +7,7 @@ class MiddlewareCallback
     /** @var callable */
     private $callback;
     /** @var callable[] */
-    private $middlewares;
+    private array $middlewares;
 
     function __construct($callback, array $middlewares)
     {

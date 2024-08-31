@@ -5,12 +5,12 @@ namespace Sunlight\Plugin;
 class PluginRouter
 {
     /** @var array<array{type: string, pattern: string, attrs: array, callback: callable}> */
-    private $routes = [];
+    private array $routes = [];
 
     /**
      * @param callable $callback
      */
-    function register(string $type, string $pattern, array $attrs, $callback): void
+    function register(string $type, string $pattern, array $attrs, callable $callback): void
     {
         $this->routes[] = [
             'type' => $type,

@@ -13,12 +13,9 @@ class Message
     const WARNING = 'warn';
     const ERROR = 'err';
 
-    /** @var string */
-    private $type;
-    /** @var string */
-    private $message;
-    /** @var bool */
-    private $isHtml;
+    private string $type;
+    private string $message;
+    private bool $isHtml;
 
     /**
      * @param string $type see class constants

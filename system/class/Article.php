@@ -63,9 +63,8 @@ abstract class Article
      *
      * @param string $slug article slug
      * @param int|null $mainCategoryId main category ID (home1)
-     * @return array|false
      */
-    static function find(string $slug, ?int $mainCategoryId = null)
+    static function find(string $slug, ?int $mainCategoryId = null): array|bool
     {
         $authorQuery = User::createQuery('a.author');
 

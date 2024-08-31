@@ -21,10 +21,8 @@ class SqlReader
         ['/*', '*/'],
     ];
 
-    /** @var string */
-    private $input;
-    /** @var string */
-    private $delimiter = ';';
+    private string $input;
+    private string $delimiter = ';';
 
     function __construct(string $input)
     {
@@ -72,7 +70,7 @@ class SqlReader
      * @param callable|null $callback callback(string query, array queryMap): void to invoke for each query
      * @return string[]|int array or number of queries (if callback is used)
      */
-    function read(?callable $callback = null)
+    function read(?callable $callback = null): array|int
     {
         $query = null;
         $queries = $callback === null ? [] : 0;

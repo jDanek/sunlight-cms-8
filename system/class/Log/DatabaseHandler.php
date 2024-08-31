@@ -27,7 +27,7 @@ class DatabaseHandler implements LogHandlerInterface
         ]);
     }
 
-    function get($id): ?LogEntry
+    function get(int|string $id): ?LogEntry
     {
         $row = DB::queryRow('SELECT * FROM ' . DB::table('log') . ' WHERE id=' . DB::val($id));
 

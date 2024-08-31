@@ -190,10 +190,10 @@ abstract class Zip
      *
      * If a string is returned it will always begin with a slash.
      *
-     * @param int|bool $lastSlashPos
+     * @param bool|int $lastSlashPos
      * @throws \InvalidArgumentException if the mode is invalid
      */
-    private static function getSubpath(int $mode, string $path, $lastSlashPos, int $prefixLen, ?string $excludePrefix, int $excludePrefixLen): ?string
+    private static function getSubpath(int $mode, string $path, bool|int $lastSlashPos, int $prefixLen, ?string $excludePrefix, int $excludePrefixLen): ?string
     {
         // determine subpath
         switch ($mode) {

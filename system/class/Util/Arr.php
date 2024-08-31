@@ -31,7 +31,7 @@ abstract class Arr
      *
      * @param array-key $existingKey
      */
-    static function insertAfter(array &$array, $existingKey, array $newPairs): void
+    static function insertAfter(array &$array, int|string $existingKey, array $newPairs): void
     {
         self::insertPairs($array, $existingKey, $newPairs, true);
     }
@@ -43,7 +43,7 @@ abstract class Arr
      *
      * @param array-key $existingKey
      */
-    static function insertBefore(array &$array, $existingKey, array $newPairs): void
+    static function insertBefore(array &$array, int|string $existingKey, array $newPairs): void
     {
         self::insertPairs($array, $existingKey, $newPairs, false);
     }
@@ -75,8 +75,8 @@ abstract class Arr
     /**
      * Filter array keys
      *
-     * @param string $includedPrefix all keys must have this prefix (unless NULL)
-     * @param string $excludedPrefix all keys must not have this prefix (unless NULL)
+     * @param string|null $includedPrefix all keys must have this prefix (unless NULL)
+     * @param string|null $excludedPrefix all keys must not have this prefix (unless NULL)
      * @param string[] $excludedKeys all keys in this list are excluded
      */
     static function filterKeys(array $array, ?string $includedPrefix = null, ?string $excludedPrefix = null, array $excludedKeys = []): array
@@ -162,7 +162,7 @@ abstract class Arr
     /**
      * @param array-key $existingKey
      */
-    private static function insertPairs(array &$array, $existingKey, array $newPairs, bool $after): void
+    private static function insertPairs(array &$array, int|string $existingKey, array $newPairs, bool $after): void
     {
         if (array_key_exists($existingKey, $array)) {
             $newArray = [];

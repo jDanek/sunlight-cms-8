@@ -20,16 +20,13 @@ use Sunlight\Util\StringHelper;
 
 class ToolbarRenderer
 {
-    /** @var array */
-    private $sqlLog;
-    /** @var array */
-    private $eventLog;
-    /** @var \SplObjectStorage */
-    private $missingLocalizations;
+    private array $sqlLog;
+    private array $eventLog;
+    private \SplObjectStorage $missingLocalizations;
     /** @var LogEntry[] */
-    private $logEntries;
+    private array $logEntries;
     /** @var array[] */
-    private $dumps;
+    private array $dumps;
 
     /**
      * @param LogEntry[] $logEntries

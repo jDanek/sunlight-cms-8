@@ -4,15 +4,12 @@ namespace Sunlight\Search;
 
 class SearchResult
 {
-    /** @var string */
-    public $link;
-    /** @var string */
-    public $title;
-    /** @var string|null */
-    public $perex;
+    public string $link;
+    public string $title;
+    public ?string $perex = null;
     /**
      * @var array
      * @see \Sunlight\GenericTemplates::renderInfos()
      */
-    public $infos = [];
+    public array $infos = [];
 }

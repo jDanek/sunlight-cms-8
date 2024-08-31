@@ -14,9 +14,9 @@ interface LogHandlerInterface
     /**
      * Attempt to retrieve a log entry by ID
      *
-     * @param string|int $id
+     * @param int|string $id
      */
-    function get($id): ?LogEntry;
+    function get(int|string $id): ?LogEntry;
 
     /**
      * List entries by the given parameters

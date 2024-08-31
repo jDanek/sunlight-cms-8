@@ -6,18 +6,12 @@ use Sunlight\Database\Database as DB;
 
 class TreeReader
 {
-    /** @var string */
-    private $table;
-    /** @var string */
-    private $childrenIndex;
-    /** @var string */
-    private $idColumn;
-    /** @var string */
-    private $parentColumn;
-    /** @var string */
-    private $levelColumn;
-    /** @var string */
-    private $depthColumn;
+    private string $table;
+    private string $childrenIndex;
+    private string $idColumn;
+    private string $parentColumn;
+    private string $levelColumn;
+    private string $depthColumn;
 
     /**
      * @param string $table table name (no prefix)

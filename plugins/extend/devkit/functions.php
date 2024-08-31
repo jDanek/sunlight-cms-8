@@ -1,5 +1,6 @@
 <?php
 
+use JetBrains\PhpStorm\NoReturn;
 use Kuria\Debug\Output;
 use Kuria\Debug\Dumper;
 use Sunlight\Util\Environment;
@@ -28,7 +29,8 @@ if (!function_exists('dd')) {
     /**
      * @return never-return
      */
-    function dd($value, $maxLevel = Dumper::DEFAULT_MAX_LEVEL + 1, $maxStringLen = Dumper::DEFAULT_MAX_STRING_LENGTH * 2)
+    #[NoReturn]
+    function dd($value, $maxLevel = Dumper::DEFAULT_MAX_LEVEL + 1, $maxStringLen = Dumper::DEFAULT_MAX_STRING_LENGTH * 2): void
     {
         if (Environment::isCli()) {
             echo Dumper::dump($value, $maxLevel, $maxStringLen);

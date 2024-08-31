@@ -25,14 +25,10 @@ class Password
     /** Error - password does not match the check password */
     const ERR_CHECK_NO_MATCH = 'check_no_match';
 
-    /** @var string */
-    private $algo;
-    /** @var int */
-    private $iterations;
-    /** @var string */
-    private $salt;
-    /** @var string */
-    private $hash;
+    private string $algo;
+    private int $iterations;
+    private string $salt;
+    private string $hash;
 
     function __construct(string $algo, int $iterations, string $salt, string $hash)
     {

@@ -4,8 +4,7 @@ namespace Sunlight;
 
 class SystemChecker
 {
-    /** @var array */
-    private $paths = [
+    private array $paths = [
         'upload',
         'plugins',
         'plugins/extend',
@@ -20,8 +19,7 @@ class SystemChecker
         'images/galleries',
         'images/thumb',
     ];
-    /** @var array */
-    private $errors = [];
+    private array $errors = [];
 
     /**
      * Run system checks

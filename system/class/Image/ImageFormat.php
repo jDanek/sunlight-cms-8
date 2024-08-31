@@ -42,7 +42,7 @@ final class ImageFormat
         ],
     ];
 
-    private static $supportedOpCache = [];
+    private static array $supportedOpCache = [];
 
     static function isValidFormat(string $format): bool
     {

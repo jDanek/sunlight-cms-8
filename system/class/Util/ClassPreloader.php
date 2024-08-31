@@ -10,9 +10,9 @@ use Sunlight\Core;
 class ClassPreloader
 {
     /** @var string[] */
-    private $psr4PrefixPatterns = [];
+    private array $psr4PrefixPatterns = [];
     /** @var string[] */
-    private $excludedClassPatterns = [];
+    private array $excludedClassPatterns = [];
 
     function addPsr4Prefix(string $pattern): void
     {

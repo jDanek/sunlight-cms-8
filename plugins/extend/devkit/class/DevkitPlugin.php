@@ -15,16 +15,13 @@ use Sunlight\Settings;
 
 class DevkitPlugin extends ExtendPlugin
 {
-    /** @var Component\SqlLogger */
-    private $sqlLogger;
-    /** @var Component\EventLogger */
-    private $eventLogger;
-    /** @var Component\MissingLocalizationLogger */
-    private $missingLocalizationLogger;
+    private Component\SqlLogger $sqlLogger;
+    private Component\EventLogger $eventLogger;
+    private Component\MissingLocalizationLogger $missingLocalizationLogger;
     /** @var LogEntry[] */
-    private $logEntries = [];
+    private array $logEntries = [];
     /** @var array[] */
-    private $dumps = [];
+    private array $dumps = [];
 
     function __construct(PluginData $data, PluginManager $manager)
     {

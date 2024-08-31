@@ -9,8 +9,7 @@ use Sunlight\Localization\LocalizationDirectory;
 
 class ExtendPlugin extends Plugin implements InitializableInterface
 {
-    /** @var array|null */
-    private $enabledEventGroups;
+    private ?array $enabledEventGroups = null;
 
     function initialize(): void
     {

@@ -11,24 +11,15 @@ use Sunlight\Image\Image;
  */
 class Text3dCaptcha
 {
-    /** @var float */
-    private $scale = 5.0;
-    /** @var float */
-    private $projectionAngle = 7.6;
-    /** @var int */
-    private $font = 5;
-    /** @var int */
-    private $foregroundColor = 0;
-    /** @var int */
-    private $horizontalPadding = 3;
-    /** @var int */
-    private $verticalPadding = 1;
-    /** @var int */
-    private $letterSpacing = 1;
-    /** @var int */
-    private $backgroundColor = 0xffffff;
-    /** @var int */
-    private $noise = 0x30;
+    private float $scale = 5.0;
+    private float $projectionAngle = 7.6;
+    private int $font = 5;
+    private int $foregroundColor = 0;
+    private int $horizontalPadding = 3;
+    private int $verticalPadding = 1;
+    private int $letterSpacing = 1;
+    private int $backgroundColor = 0xffffff;
+    private int $noise = 0x30;
 
     function setScale(float $scale): void
     {

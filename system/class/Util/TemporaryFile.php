@@ -11,12 +11,9 @@ namespace Sunlight\Util;
  */
 class TemporaryFile extends \SplFileInfo
 {
-    /** @var string */
-    private $realPath;
-    /** @var bool */
-    private $valid = true;
-    /** @var bool */
-    private $keep = false;
+    private string|false $realPath;
+    private bool $valid = true;
+    private bool $keep = false;
 
     /**
      * @param string|null $fileName existing file name or null to generate

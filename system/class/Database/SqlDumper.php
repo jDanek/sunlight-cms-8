@@ -13,14 +13,10 @@ use Sunlight\Util\TemporaryFile;
  */
 class SqlDumper
 {
-    /** @var array */
-    private $tables = [];
-    /** @var bool */
-    private $dumpData = true;
-    /** @var bool */
-    private $dumpTables = true;
-    /** @var int|null */
-    private $maxPacketSize;
+    private array $tables = [];
+    private bool $dumpData = true;
+    private bool $dumpTables = true;
+    private ?int $maxPacketSize = null;
 
     /**
      * Dump tables and/or data
@@ -257,15 +253,10 @@ class SqlDumper
                 $type = $row['Type'];
             }
 
-            switch (strtolower($type)) {
-                case 'integer':
-                case 'int':
-                    $type = 'integer';
-                    break;
-                default:
-                    $type = 'string';
-                    break;
-            }
+            $type = match (strtolower($type)) {
+                'integer', 'int' => 'integer',
+                default => 'string',
+            };
 
             $columns[$row['Field']] = [$type, $row['Default']];
         }

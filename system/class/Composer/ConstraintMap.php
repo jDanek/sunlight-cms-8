@@ -5,9 +5,9 @@ namespace Sunlight\Composer;
 class ConstraintMap
 {
     /** @var array package => string[] */
-    private $constraintMap;
+    private array $constraintMap;
     /** @var array package => array(array(Repository[, package]), ...] corresponding to $constraintMap */
-    private $sourceMap;
+    private array $sourceMap;
 
     function __construct(Repository $repository)
     {

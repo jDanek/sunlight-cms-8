@@ -9,7 +9,7 @@ use Sunlight\Database\SqlReader;
 abstract class PluginInstaller
 {
     /** @var bool|null */
-    private $installed;
+    private ?bool $installed = null;
 
     /**
      * See if the plugin is installed

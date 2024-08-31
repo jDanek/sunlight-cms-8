@@ -99,13 +99,13 @@ abstract class Form
      * b) value => label pair
      * c) group label => array of choices (same rules as above)
      * 
-     * @param string $name select name
+     * @param string|null $name select name
      * @param array<string|SelectOption|array<string|SelectOption>> $choices see description
      * @param array-key|array-key[]|null $selected selected choice(s) or null
      * @param array<string, scalar|null> $attrs select tag attributes
      * @param bool $doubleEncodeLabels {@see _e()}
      */
-    static function select(?string $name, array $choices, $selected = null, array $attrs = [], bool $doubleEncodeLabels = true): string
+    static function select(?string $name, array $choices, array|int|string $selected = null, array $attrs = [], bool $doubleEncodeLabels = true): string
     {
         $output = Extend::buffer('form.select', [
             'name' => &$name,

@@ -6,13 +6,9 @@ class PluginRouterMatch
 {
     /** @var callable */
     public $callback;
-    /** @var array */
-    public $params;
+    public array $params;
 
-    /**
-     * @param callable $callback
-     */
-    function __construct($callback, array $params)
+    function __construct(callable $callback, array $params)
     {
         $this->callback = $callback;
         $this->params = $params;

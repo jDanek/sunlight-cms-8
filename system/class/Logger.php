@@ -16,8 +16,7 @@ use Sunlight\Util\Request;
 
 abstract class Logger
 {
-    /** @var LogHandlerInterface */
-    private static $handler;
+    private static ?LogHandlerInterface $handler = null;
 
     /** Map of log level numbers to log level names */
     const LEVEL_NAMES = [
@@ -40,7 +39,7 @@ abstract class Logger
     const INFO = 6;
     const DEBUG = 7;
 
-    private static $initialized = false;
+    private static bool $initialized = false;
 
     static function init(): void
     {
@@ -178,9 +177,9 @@ abstract class Logger
     /**
      * Attempt to retrieve a log entry by ID
      *
-     * @param string|int $id
+     * @param int|string $id
      */
-    static function get($id): ?LogEntry
+    static function get(int|string $id): ?LogEntry
     {
         if (!self::$initialized) {
             return null;

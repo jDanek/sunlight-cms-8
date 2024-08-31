@@ -7,11 +7,10 @@ use Sunlight\Extend;
 class Search
 {
     /** @var array<string, SearchSource> */
-    private static $sources;
+    private static array $sources = [];
     /** @var array<string, true> */
-    private $enabledSources = [];
-    /** @var string */
-    private $query = '';
+    private array $enabledSources = [];
+    private string $query = '';
 
     function toggleSource(string $key, bool $enabled): void
     {

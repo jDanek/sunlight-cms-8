@@ -8,17 +8,12 @@ use Sunlight\Core;
 class PluginManager
 {
     /** @var array<string, Type\PluginType> */
-    private $types;
-    /** @var PluginRegistry */
-    private $plugins;
-    /** @var PluginConfigStore */
-    private $configStore;
-    /** @var PluginRouter */
-    private $router;
-    /** @var NamespacedCache */
-    private $cache;
-    /** @var bool */
-    private $initialized = false;
+    private array $types;
+    private PluginRegistry $plugins;
+    private PluginConfigStore $configStore;
+    private PluginRouter $router;
+    private NamespacedCache $cache;
+    private bool $initialized = false;
 
     function __construct()
     {

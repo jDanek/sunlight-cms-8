@@ -4,8 +4,7 @@ namespace Sunlight\Util;
 
 abstract class HtmlFilter
 {
-    /** @var \HTMLPurifier|null */
-    private static $purifier;
+    private static ?\HTMLPurifier $purifier = null;
 
     static function sanitize(string $html): string
     {

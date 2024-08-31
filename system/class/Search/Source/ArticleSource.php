@@ -11,10 +11,8 @@ use Sunlight\Util\StringHelper;
 
 class ArticleSource extends FulltextSource
 {
-    /** @var string */
-    private $joins;
-    /** @var string */
-    private $filter;
+    private string $joins;
+    private string $filter;
 
     function __construct(string $key)
     {

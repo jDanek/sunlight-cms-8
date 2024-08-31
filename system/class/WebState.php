@@ -21,43 +21,39 @@ class WebState
     const UNAUTHORIZED = 5;
 
     /** @var int|null output type (see WebState::* constants) */
-    public $type;
+    public ?int $type = null;
     /** @var int|null numeric identifier */
-    public $id;
+    public ?int $id = null;
     /** @var string|null string identifier */
-    public $slug;
+    public ?string $slug = null;
     /** @var string|null part of the string identifier parsed as a segment */
-    public $segment;
+    public ?string $segment = null;
     /** @var string content URL */
-    public $url;
+    public string $url;
     /** @var string|null HTML title (<title>) */
-    public $title;
+    public ?string $title = null;
     /** @var string|null meta description */
-    public $description;
+    public ?string $description = null;
     /** @var string|null top level heading (<h1>) */
-    public $heading;
+    public ?string $heading = null;
     /** @var bool top level heading toggle */
-    public $headingEnabled = true;
+    public bool $headingEnabled = true;
     /** @var string|null back link URL */
-    public $backlink;
+    public ?string $backlink = null;
     /** @var array<array{title: string, url: string}> */
-    public $crumbs = [];
+    public array $crumbs = [];
     /** @var string|null redirection target */
-    public $redirectTo;
+    public ?string $redirectTo = null;
     /** @var bool permanent redirection 1/0 */
-    public $redirectToPermanent = false;
-    /** @var TemplatePlugin */
-    public $template;
-    /** @var string */
-    public $templateLayout;
-    /** @var array|null */
-    public $templateBoxes;
-    /** @var string|null */
-    public $templatePath;
+    public bool $redirectToPermanent = false;
+    public TemplatePlugin $template;
+    public string $templateLayout;
+    public ?array $templateBoxes = null;
+    public ?string $templatePath = null;
     /** @var string[] classes to put on <body> */
-    public $bodyClasses = [];
+    public array $bodyClasses = [];
     /** @var string the content */
-    public $output = '';
+    public string $output = '';
 
     /**
      * Try to set current template using the template and layout identifier

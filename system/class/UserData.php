@@ -9,10 +9,8 @@ use Sunlight\Util\TemporaryFile;
 
 class UserData
 {
-    /** @var int */
-    private $userId;
-    /** @var array */
-    private $options;
+    private int $userId;
+    private array $options;
 
     function __construct(int $userId, array $options)
     {

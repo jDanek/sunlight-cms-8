@@ -14,8 +14,7 @@ class TemplatePlugin extends Plugin
 {
     const DEFAULT_LAYOUT = 'default';
 
-    /** @var LocalizationDictionary */
-    protected $lang;
+    protected LocalizationDictionary $lang;
 
     function __construct(PluginData $data, PluginManager $manager)
     {

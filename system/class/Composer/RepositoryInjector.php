@@ -9,13 +9,12 @@ use Sunlight\Util\Environment;
 class RepositoryInjector
 {
     /** @var \stdClass[] name-indexed */
-    private $packages;
+    private array $packages;
     /** @var array indicates packages that cannot be overridden */
-    private $rootMap;
+    private array $rootMap;
     /** @var array package name => Repository */
-    private $sourceMap;
-    /** @var ConstraintMap */
-    private $constraintMap;
+    private array $sourceMap;
+    private ConstraintMap $constraintMap;
 
     function __construct(Repository $rootRepository)
     {
@@ -153,17 +152,11 @@ class RepositoryInjector
         return $this->constraintMap;
     }
 
-    /**
-     * @param array $failedIndexes
-     */
     private function packageSatisfiesExistingConstraints(\stdClass $package, ?array &$failedIndexes): bool
     {
         return $this->satisfies($package->version, $this->constraintMap->getConstraints($package->name), $failedIndexes);
     }
 
-    /**
-     * @param array $failedIndexes
-     */
     private function existingPackageSatisfiesConstraints(string $packageName, array $constraints, ?array &$failedIndexes): bool
     {
         return $this->satisfies($this->packages[$packageName]->version, $constraints, $failedIndexes);

@@ -7,10 +7,8 @@ use Sunlight\Message;
 
 abstract class Action
 {
-    /** @var bool */
-    private $catchExceptions = false;
-    /** @var bool */
-    private $renderExceptions = false;
+    private bool $catchExceptions = false;
+    private bool $renderExceptions = false;
 
     /**
      * Set whether exceptions should be catched

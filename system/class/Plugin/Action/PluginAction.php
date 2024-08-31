@@ -14,8 +14,7 @@ use Sunlight\Xsrf;
 
 abstract class PluginAction extends Action
 {
-    /** @var Plugin */
-    protected $plugin;
+    protected Plugin $plugin;
 
     /**
      * @throws \RuntimeException if instantiated outside of admin environment

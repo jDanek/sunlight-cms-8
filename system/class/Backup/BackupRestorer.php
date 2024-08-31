@@ -14,8 +14,7 @@ use Sunlight\Util\Filesystem;
 
 class BackupRestorer
 {
-    /** @var Backup */
-    private $backup;
+    private Backup $backup;
 
     function __construct(Backup $backup)
     {

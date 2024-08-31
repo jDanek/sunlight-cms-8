@@ -7,9 +7,8 @@ use Sunlight\Database\Database as DB;
 
 abstract class Settings
 {
-    /** @var array */
-    private static $settings = [];
-    private static $initialized = false;
+    private static array $settings = [];
+    private static bool $initialized = false;
 
     static function init(): void
     {

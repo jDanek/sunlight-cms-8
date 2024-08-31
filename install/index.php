@@ -43,10 +43,9 @@ foreach ($defaults as $key => $value) {
  */
 abstract class Labels
 {
-    /** @var string */
-    private static $language = '_none';
+    private static string $language = '_none';
     /** @var string[][] */
-    private static $labels = [
+    private static array $labels = [
         // no language set
         '_none' => [
             'step.submit' => 'Pokračovat / Continue',
@@ -276,10 +275,9 @@ abstract class Errors
  */
 class StepRunner
 {
-    /** @var Step|null */
-    private $current;
+    private ?Step $current = null;
     /** @var Step[] */
-    private $steps;
+    private array $steps;
 
     /**
      * @param Step[] $steps
@@ -392,18 +390,12 @@ class StepRunner
  */
 abstract class Step
 {
-    /** @var int */
-    protected $number;
-    /** @var int */
-    protected $submittedNumber;
-    /** @var array */
-    protected $vars = [];
-    /** @var bool */
-    protected $submitted = false;
-    /** @var array */
-    protected $errors = [];
-    /** @var ConfigurationFile */
-    protected $config;
+    protected int $number;
+    protected int $submittedNumber;
+    protected array $vars = [];
+    protected bool $submitted = false;
+    protected array $errors = [];
+    protected ConfigurationFile $config;
 
     function __construct(ConfigurationFile $config)
     {
@@ -575,7 +567,7 @@ class ConfigurationStep extends Step
             'db.engine' => trim(Request::post('config_db_engine', '')),
             'secret' => trim(Request::post('config_secret', '')),
             'fallback_lang' => $this->vars['language'],
-            'debug' => (bool) Form::loadCheckbox('config_debug'),
+            'debug' => Form::loadCheckbox('config_debug'),
             'timezone' => trim(Request::post('config_timezone', '')) ?: null,
         ];
 
@@ -748,7 +740,7 @@ class ConfigurationStep extends Step
 class ImportDatabaseStep extends Step
 {
     /** @var string[] */
-    private static $baseTableNames = [
+    private static array $baseTableNames = [
         'article',
         'box',
         'gallery_image',
@@ -766,7 +758,7 @@ class ImportDatabaseStep extends Step
         'user_group',
     ];
     /** @var array|null */
-    private $existingTableNames;
+    private ?array $existingTableNames = null;
 
     function getMainLabelKey(): string
     {

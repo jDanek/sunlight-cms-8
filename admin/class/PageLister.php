@@ -21,12 +21,9 @@ abstract class PageLister
     /** Mode - single level */
     const MODE_SINGLE_LEVEL = 1;
 
-    /** @var bool */
-    private static $initialized = false;
-    /** @var array|null */
-    private static $config;
-    /** @var array|null */
-    private static $pluginTypes;
+    private static bool $initialized = false;
+    private static ?array $config = null;
+    private static ?array $pluginTypes = null;
 
     /**
      * Initialize

@@ -7,7 +7,7 @@ use Sunlight\Localization\LocalizationDictionary;
 class MissingLocalizationLogger
 {
     /** @var \SplObjectStorage dict => array(key1 => count1, ...) */
-    private $missingEntries;
+    private \SplObjectStorage $missingEntries;
 
     function __construct()
     {

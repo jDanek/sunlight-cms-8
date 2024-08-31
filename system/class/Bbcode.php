@@ -27,7 +27,7 @@ abstract class Bbcode
      *           5: (bool) eat whitespace after closing tag
      *      )
      */
-    private static $tags = [
+    private static array $tags = [
         'b' => [true, false, true, true, 1, false], // bold
         'i' => [true, false, true, true, 1, false], // italic
         'u' => [true, false, true, true, 1, false], // underline
@@ -44,7 +44,7 @@ abstract class Bbcode
         'noformat' => [true, false, true, false, null, true], // no format
     ];
 
-    private static $extended = false;
+    private static bool $extended = false;
 
     /**
      * Get known BBCode tags

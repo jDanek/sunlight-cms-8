@@ -13,14 +13,10 @@ use Sunlight\Util\StringHelper;
 
 class PostSource extends FulltextSource
 {
-    /** @var string */
-    private $columns;
-    /** @var string */
-    private $joins;
-    /** @var string */
-    private $filter;
-    /** @var array */
-    private $userQuery;
+    private string $columns;
+    private string $joins;
+    private string $filter;
+    private array $userQuery;
 
     function __construct(string $key)
     {

@@ -104,7 +104,7 @@ class PostService
      * @param bool $force_locked force locked state 1/0
      * @param string|null $url custom URL or null (= automatic)
      */
-    static function renderList(int $style, int $home, $vars, bool $force_locked = false, ?string $url = null): string
+    static function renderList(int $style, int $home, mixed $vars, bool $force_locked = false, ?string $url = null): string
     {
         global $_index;
 
@@ -785,7 +785,6 @@ class PostService
      * @see Router::postPermalink() to get a permanent URL that is not resource-intensive to generate
      *
      * @param array $post post data - {@see Post::createFilter()
-     * @return string
      */
     static function getCurrentPostUrl(array $post): string
     {

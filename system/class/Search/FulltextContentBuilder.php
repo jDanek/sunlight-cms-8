@@ -10,7 +10,7 @@ use Sunlight\Util\StringHelper;
 class FulltextContentBuilder
 {
     /** @var string[] */
-    private $parts = [];
+    private array $parts = [];
 
     /**
      * @param array{

@@ -16,14 +16,10 @@ abstract class Database
     const ENGINE_INNODB = 'InnoDB';
     const ENGINE_MYISAM = 'MyISAM';
 
-    /** @var \mysqli */
-    static $mysqli;
-    /** @var string */
-    static $database;
-    /** @var string */
-    static $prefix;
-    /** @var string */
-    static $engine;
+    static \mysqli $mysqli;
+    static string $database;
+    static string $prefix;
+    static string $engine;
 
     /**
      * Connect to a MySQL server
@@ -97,9 +93,8 @@ abstract class Database
      * @param bool $expectError don't throw an exception on failure 1/0
      * @param bool $event trigger an extend event 1/0
      * @throws DatabaseException
-     * @return \mysqli_result|bool
      */
-    static function query(string $sql, bool $expectError = false, bool $event = true)
+    static function query(string $sql, bool $expectError = false, bool $event = true): \mysqli_result|bool
     {
         if ($event) {
             Extend::call('db.query', ['sql' => $sql]);
@@ -124,9 +119,8 @@ abstract class Database
      * Run a SQL query and return the first result
      *
      * @param bool $expectError don't throw an exception on failure 1/0
-     * @return array|false
      */
-    static function queryRow(string $sql, bool $expectError = false)
+    static function queryRow(string $sql, bool $expectError = false): array|bool
     {
         $result = self::query($sql, $expectError);
 
@@ -144,9 +138,8 @@ abstract class Database
      * @param int|string|null $fetchColumn only fetch the given column instead of the entire row
      * @param bool $assoc fetch rows as associative arrays 1/0
      * @param bool $expectError don't throw an exception on failure 1/0
-     * @return array|false
      */
-    static function queryRows(string $sql, $indexBy = null, $fetchColumn = null, bool $assoc = true, bool $expectError = false)
+    static function queryRows(string $sql, int|string $indexBy = null, int|string $fetchColumn = null, bool $assoc = true, bool $expectError = false): bool|array
     {
         $result = self::query($sql, $expectError);
 
@@ -194,10 +187,8 @@ abstract class Database
 
     /**
      * Get a single row from a result
-     *
-     * @return array|false
      */
-    static function row(\mysqli_result $result)
+    static function row(\mysqli_result $result): bool|array
     {
         return $result->fetch_assoc() ?? false;
     }
@@ -209,7 +200,7 @@ abstract class Database
      * @param int|string|null $fetchColumn only fetch the given column instead of the entire row
      * @param bool $assoc fetch rows as associative arrays 1/0
      */
-    static function rows(\mysqli_result $result, $indexBy = null, $fetchColumn = null, bool $assoc = true): array
+    static function rows(\mysqli_result $result, int|string $indexBy = null, int|string $fetchColumn = null, bool $assoc = true): array
     {
         $type = $assoc ? MYSQLI_ASSOC : MYSQLI_NUM;
         $rows = [];
@@ -227,10 +218,8 @@ abstract class Database
 
     /**
      * Get a single row from a result using numeric indexes
-     *
-     * @return array|false
      */
-    static function rown(\mysqli_result $result)
+    static function rown(\mysqli_result $result): bool|array
     {
         return $result->fetch_row() ?? false;
     }
@@ -435,9 +424,8 @@ abstract class Database
      * @param string $table table name (no prefix)
      * @param array<string, mixed> $data associative array with row data
      * @param bool $getInsertId return LAST_INSERT_ID() 1/0
-     * @return bool|int
      */
-    static function insert(string $table, array $data, bool $getInsertId = false)
+    static function insert(string $table, array $data, bool $getInsertId = false): int|bool
     {
         if (empty($data)) {
             return false;

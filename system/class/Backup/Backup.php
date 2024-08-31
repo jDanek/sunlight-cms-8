@@ -17,38 +17,26 @@ use Sunlight\Util\Zip;
  */
 class Backup
 {
-    /** @var \ZipArchive */
-    private $zip;
-    /** @var string */
-    private $path;
-    /** @var string */
-    private $dataPath = 'data';
-    /** @var string */
-    private $dbDumpPath = 'database.sql';
-    /** @var string|null */
-    private $metadataPath = 'backup.json';
+    private \ZipArchive $zip;
+    private string $path;
+    private string $dataPath = 'data';
+    private string $dbDumpPath = 'database.sql';
+    private ?string $metadataPath = 'backup.json';
     /** @var callable|null */
     private $metadataFactory;
     /** @var string[] */
-    private $directoryList = [];
+    private array $directoryList = [];
     /** @var string[] */
-    private $fileList = [];
-    /** @var bool */
-    private $open = false;
-    /** @var bool */
-    private $new = false;
-    /** @var array|null */
-    private $metadataCache;
+    private array $fileList = [];
+    private bool $open = false;
+    private bool $new = false;
+    private ?array $metadataCache = null;
     /** @var string[] */
-    private $metadataErrors = [];
-    /** @var array|null */
-    private $addedMetaData;
-    /** @var TemporaryFile|null */
-    private $dbDumpFile;
-    /** @var string|null */
-    private $dbDumpPrefix;
-    /** @var string|null */
-    private $dbDumpEngine;
+    private array $metadataErrors = [];
+    private ?array $addedMetaData = null;
+    private ?TemporaryFile $dbDumpFile = null;
+    private ?string $dbDumpPrefix = null;
+    private ?string $dbDumpEngine = null;
 
     function __construct(string $path)
     {
@@ -328,10 +316,8 @@ class Backup
 
     /**
      * Get database dump stream
-     *
-     * @return string|bool
      */
-    function getDatabaseDump()
+    function getDatabaseDump(): bool|string
     {
         $this->ensureOpenAndNotNew();
 
@@ -384,7 +370,7 @@ class Backup
      *
      * @param string[] $files file paths relative to the data directory
      */
-    function extractFiles($files, string $targetPath): void
+    function extractFiles(array $files, string $targetPath): void
     {
         $this->ensureOpenAndNotNew();
 

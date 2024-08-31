@@ -4,12 +4,9 @@ namespace Sunlight\Search;
 
 abstract class SearchSource
 {
-    /** @var string */
-    private $key;
-    /** @var bool */
-    private $enabledByDefault = true;
-    /** @var int */
-    private $limit = 100;
+    private string $key;
+    private bool $enabledByDefault = true;
+    private int $limit = 100;
 
     function __construct(string $key)
     {

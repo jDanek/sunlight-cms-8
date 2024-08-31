@@ -5,15 +5,15 @@ namespace Sunlight\Database;
 class TreeReaderOptions
 {
     /** @var string[] list of additional columns to load */
-    public $columns = [];
+    public array $columns = [];
     /** @var int|null only load this node and its children */
-    public $nodeId;
+    public ?int $nodeId = null;
     /** @var int|null node depth, if known (can also be used to limit depth) */
-    public $nodeDepth;
+    public ?int $nodeDepth = null;
     /** @var string|null name of column to use for sorting */
-    public $sortBy;
+    public ?string $sortBy = null;
     /** @var bool sort mode */
-    public $sortAsc = true;
+    public bool $sortAsc = true;
     /** @var TreeFilterInterface|null tree filter */
-    public $filter;
+    public ?TreeFilterInterface $filter = null;
 }

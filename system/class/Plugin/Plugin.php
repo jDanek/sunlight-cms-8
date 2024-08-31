@@ -37,14 +37,10 @@ abstract class Plugin implements CallbackObjectInterface
         'remove' => Action\RemoveAction::class,
     ];
 
-    /** @var PluginData */
-    protected $data;
-    /** @var PluginManager */
-    protected $manager;
-    /** @var ConfigurationFile|null */
-    private $config;
-    /** @var NamespacedCache|null */
-    private $cache;
+    protected PluginData $data;
+    protected PluginManager $manager;
+    private ?ConfigurationFile $config = null;
+    private ?NamespacedCache $cache = null;
 
     function __construct(PluginData $data, PluginManager $manager)
     {
@@ -57,9 +53,6 @@ abstract class Plugin implements CallbackObjectInterface
         return Core::$pluginManager->getPlugins()->hasClass(static::class);
     }
 
-    /**
-     * @return static
-     */
     static function getInstance(): self
     {
         $inst = Core::$pluginManager->getPlugins()->getByClass(static::class);
@@ -172,9 +165,9 @@ abstract class Plugin implements CallbackObjectInterface
     }
 
     /**
-     * @return mixed null if not defined
+     * @return mixed|null null if not defined
      */
-    function getExtraOption(string $name)
+    function getExtraOption(string $name): mixed
     {
         return $this->data->options['extra'][$name] ?? null;
     }

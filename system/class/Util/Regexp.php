@@ -28,7 +28,7 @@ abstract class Regexp
      * @param int|null &$count variable to store the number of replacements into
      * @return string|bool false on failure
      */
-    static function replace(string $pattern, string $subject, callable $callback, int $limit = -1, int $offset = 0, ?int &$count = null)
+    static function replace(string $pattern, string $subject, callable $callback, int $limit = -1, int $offset = 0, ?int &$count = null): bool|string
     {
         $count = 0;
         $matches = null;

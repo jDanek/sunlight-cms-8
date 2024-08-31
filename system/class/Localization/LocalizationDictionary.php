@@ -7,10 +7,9 @@ use Sunlight\Extend;
 
 class LocalizationDictionary
 {
-    /** @var array */
-    private $entries = [];
+    private array $entries = [];
     /** @var LocalizationDictionary[] prefix => dict */
-    private $subDictionaries;
+    private array $subDictionaries;
 
     /**
      * Get a localization string

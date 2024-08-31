@@ -19,7 +19,7 @@ use Kuria\Options\Option;
 abstract class CallbackHandler
 {
     /** @var array<string, ScriptCallback> */
-    private static $scriptCache = [];
+    private static array $scriptCache = [];
 
     /**
      * Get callback definition options (read-only)
@@ -70,7 +70,7 @@ abstract class CallbackHandler
                     function ($definition) use ($object) { return self::fromArray($definition, $object); },
                     $definition['middlewares']
                 )
-            );;
+            );
         }
 
         return $callable;

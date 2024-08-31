@@ -71,7 +71,7 @@ class Paginator
             $endbonus = 0;
         }
 
-        $endpage = $current_page + 1 + Settings::get('showpages') + $endbonus;
+        $endpage = $current_page + 1 + (int) Settings::get('showpages') + $endbonus;
 
         if ($endpage > $pages) {
             $beginpage -= $endpage - $pages;

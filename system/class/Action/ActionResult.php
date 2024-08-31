@@ -6,17 +6,15 @@ use Sunlight\Message;
 
 class ActionResult
 {
-    /** @var bool */
-    private $result;
+    private ?bool $result;
     /** @var Message[] */
-    private $messages;
-    /** @var string|null */
-    private $output;
+    private Message|array|null $messages;
+    private ?string $output;
 
     /**
      * @param Message|Message[]|null $messages
      */
-    function __construct(?bool $result = null, $messages = null, ?string $output = null)
+    function __construct(?bool $result = null, Message|array $messages = null, ?string $output = null)
     {
         if ($messages !== null) {
             if (!is_array($messages)) {
@@ -36,7 +34,7 @@ class ActionResult
      *
      * @param Message|Message[]|null $messages
      */
-    static function output(?string $output, $messages = null): self
+    static function output(?string $output, Message|array $messages = null): self
     {
         return new self(null, $messages, $output);
     }
@@ -46,7 +44,7 @@ class ActionResult
      *
      * @param Message|Message[]|null $messages
      */
-    static function success($messages = null): self
+    static function success(Message|array $messages = null): self
     {
         if (empty($messages)) {
             $messages = Message::ok(_lang('action.success'));
@@ -60,7 +58,7 @@ class ActionResult
      *
      * @param Message|Message[]|null $messages
      */
-    static function failure($messages = null): self
+    static function failure(Message|array $messages = null): self
     {
         if (empty($messages)) {
             $messages = Message::error(_lang('action.failure'));

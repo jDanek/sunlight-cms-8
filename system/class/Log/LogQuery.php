@@ -4,28 +4,16 @@ namespace Sunlight\Log;
 
 class LogQuery
 {
-    /** @var int|null */
-    public $maxLevel;
-    /** @var string|null */
-    public $category;
-    /** @var int|null */
-    public $since;
-    /** @var int|null */
-    public $until;
-    /** @var string|null */
-    public $keyword;
-    /** @var string|null */
-    public $method;
-    /** @var string|null */
-    public $urlKeyword;
-    /** @var string|null */
-    public $ip;
-    /** @var int|null */
-    public $userId;
-    /** @var bool */
-    public $desc = true;
-    /** @var int */
-    public $offset = 0;
-    /** @var int */
-    public $limit = 100;
+    public ?int $maxLevel = null;
+    public ?string $category = null;
+    public ?int $since = null;
+    public ?int $until = null;
+    public ?string $keyword = null;
+    public ?string $method = null;
+    public ?string $urlKeyword = null;
+    public ?string $ip = null;
+    public ?int $userId = null;
+    public bool $desc = true;
+    public int $offset = 0;
+    public int $limit = 100;
 }

@@ -40,44 +40,26 @@ abstract class Core
     /** Script environment */
     const ENV_SCRIPT = 'script';
 
-    /** @var float */
-    static $start;
-    /** @var string */
-    static $env;
-    /** @var bool */
-    static $debug;
-    /** @var string */
-    static $secret;
-    /** @var string */
-    static $lang;
-    /** @var string */
-    static $fallbackLang;
-    /** @var LanguagePlugin */
-    static $langPlugin;
-    /** @var bool */
-    static $safeMode;
+    static float $start;
+    static string $env;
+    static bool $debug;
+    static string $secret;
+    static string $lang;
+    static string $fallbackLang;
+    static LanguagePlugin $langPlugin;
+    static bool $safeMode;
 
-    /** @var ClassLoader */
-    static $classLoader;
-    /** @var ErrorHandler */
-    static $errorHandler;
-    /** @var EventEmitter */
-    static $eventEmitter;
-    /** @var PluginManager */
-    static $pluginManager;
-    /** @var Cache */
-    static $cache;
-    /** @var LocalizationDictionary */
-    static $dictionary;
+    static ClassLoader $classLoader;
+    static ErrorHandler $errorHandler;
+    static EventEmitter $eventEmitter;
+    static PluginManager $pluginManager;
+    static ?Cache $cache = null;
+    static LocalizationDictionary $dictionary;
 
-    /** @var Url */
-    private static $baseUrl;
-    /** @var Url */
-    private static $currentUrl;
-    /** @var string|null */
-    private static $stability;
-    /** @var bool */
-    private static $ready = false;
+    private static Url $baseUrl;
+    private static Url $currentUrl;
+    private static ?string $stability = null;
+    private static bool $ready = false;
 
     /**
      * Initialize the system

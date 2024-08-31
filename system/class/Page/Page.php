@@ -119,14 +119,10 @@ abstract class Page
      */
     const PLUGIN = 9;
     
-    /** @var TreeManager|null */
-    private static $treeManager;
-    /** @var TreeReader|null */
-    private static $treeReader;
-    /** @var array */
-    private static $pathCache = [];
-    /** @var array */
-    private static $childrenCache = [];
+    private static ?TreeManager $treeManager = null;
+    private static ?TreeReader $treeReader = null;
+    private static array $pathCache = [];
+    private static array $childrenCache = [];
 
     /**
      * Find a page and load its data
@@ -135,9 +131,8 @@ abstract class Page
      * @param string|null $extra_columns extra columns to load (automatically separated by a comma)
      * @param string|null $extra_joins extra joins (automatically separated by a space)
      * @param string|null $extra_conds extra conditions (automatically separated by ' AND ')
-     * @return array|false
      */
-    static function find(array $segments, ?string $extra_columns = null, ?string $extra_joins = null, ?string $extra_conds = null)
+    static function find(array $segments, ?string $extra_columns = null, ?string $extra_joins = null, ?string $extra_conds = null): array|bool
     {
         // basic query
         $sql = 'SELECT page.*';
@@ -274,9 +269,8 @@ abstract class Page
      * Get data of a specific page
      *
      * @param bool $addTreeColumns load tree columns as well 1/0
-     * @return array|false
      */
-    static function getData(int $id, array $columns, bool $addTreeColumns = false)
+    static function getData(int $id, array $columns, bool $addTreeColumns = false): bool|array
     {
         if ($id < 1) {
             return false;

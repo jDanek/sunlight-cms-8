@@ -22,12 +22,10 @@ class ImageException extends \RuntimeException
     const RESIZE_FAILED = 'resize-failed';
     const WRITE_FAILED = 'write-failed';
 
-    /** @var string */
-    private $reasonCode;
+    private string $reasonCode;
     /** @var string[] */
-    private $userFriendlyMessageArgs;
-    /** @var string|null */
-    private $additionalInformation;
+    private ?array $userFriendlyMessageArgs;
+    private ?string $additionalInformation;
 
     function __construct(
         string $reasonCode,

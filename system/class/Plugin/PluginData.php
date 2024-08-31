@@ -6,30 +6,19 @@ use Sunlight\Util\StringHelper;
 
 class PluginData
 {
-    /** @var string */
-    public $type;
-    /** @var string */
-    public $id;
-    /** @var string */
-    public $name;
-    /** @var string */
-    public $camelCasedName;
-    /** @var string */
-    public $dir;
-    /** @var string */
-    public $file;
-    /** @var string */
-    public $webPath;
-    /** @var string|null */
-    public $status;
-    /** @var bool|null */
-    public $installed;
-    /** @var bool */
-    public $vendor = false;
+    public string $type;
+    public string $id;
+    public string $name;
+    public string $camelCasedName;
+    public string $dir;
+    public string $file;
+    public string $webPath;
+    public ?string $status = null;
+    public ?bool $installed = null;
+    public bool $vendor = false;
     /** @var string[] */
-    public $errors = [];
-    /** @var array|null */
-    public $options;
+    public array $errors = [];
+    public ?array $options = null;
 
     function __construct(string $type, string $id, string $name, string $file, string $webPath)
     {

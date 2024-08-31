@@ -564,9 +564,9 @@ abstract class Admin
     /**
      * Render <select> for template layout
      *
-     * @param string|string[] $selected
+     * @param string|string[]|null $selected
      */
-    static function templateLayoutSelect(string $name, $selected, ?string $empty_option = null, ?int $multiple = null, ?string $class = null): string
+    static function templateLayoutSelect(string $name, array|string|null $selected, ?string $empty_option = null, ?int $multiple = null, ?string $class = null): string
     {
         $output = '<select name="' . $name . '"'
             . ($class !== null ? ' class="' . $class . '"' : '')

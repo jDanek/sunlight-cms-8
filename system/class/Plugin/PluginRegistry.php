@@ -5,15 +5,15 @@ namespace Sunlight\Plugin;
 class PluginRegistry
 {
     /** @var array<string, Plugin> ID-indexed */
-    public $map = [];
+    public array $map = [];
     /** @var array<string, array<string, Plugin>> type and name-indexed */
-    public $typeMap = [];
+    public array $typeMap = [];
     /** @var array<string, Plugin> class indexed (only plugins with custom classes) */
-    public $classMap;
+    public array $classMap;
     /** @var array<string, Plugin> ID-indexed */
-    public $inactiveMap = [];
+    public array $inactiveMap = [];
     /** @var array<string, array<string, InactivePlugin>> type and name-indexed */
-    public $inactiveTypeMap = [];
+    public array $inactiveTypeMap = [];
 
     /**
      * See if the given plugin ID exists

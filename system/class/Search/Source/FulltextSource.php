@@ -12,11 +12,10 @@ use Sunlight\Search\SearchSource;
 abstract class FulltextSource extends SearchSource
 {
     /** @var ModifierString */
-    private $modifier = 'IN BOOLEAN MODE';
+    private ?string $modifier = 'IN BOOLEAN MODE';
     /** @var callable|null */
     private $queryProcessor;
-    /** @var float */
-    private $scoreThreshold = 0.0;
+    private float $scoreThreshold = 0.0;
 
     function __construct(string $key)
     {

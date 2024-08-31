@@ -9,8 +9,7 @@ namespace Sunlight\Database;
  */
 class RawSqlValue
 {
-    /** @var string */
-    public $sql;
+    public string $sql;
 
     function __construct(string $sql)
     {

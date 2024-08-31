@@ -103,7 +103,7 @@ abstract class Post
                 $post[$userQuery['prefix'] . 'id'] !== null
                 && User::equals($post[$userQuery['prefix'] . 'id'])
                 && (
-                    $post['time'] + Settings::get('postadmintime') > time()
+                    $post['time'] + (int) Settings::get('postadmintime') > time()
                     || User::hasPrivilege('unlimitedpostaccess')
                 )
             ) {

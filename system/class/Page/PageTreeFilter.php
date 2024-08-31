@@ -9,10 +9,8 @@ use Sunlight\User;
 
 class PageTreeFilter implements TreeFilterInterface
 {
-    /** @var array */
-    private $options;
-    /** @var string */
-    private $sql;
+    private array $options;
+    private string $sql;
 
     /**
      * Supported options:
