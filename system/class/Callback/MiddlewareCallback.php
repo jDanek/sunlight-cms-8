@@ -4,16 +4,14 @@ namespace Sunlight\Callback;
 
 class MiddlewareCallback
 {
-    /** @var callable */
-    private $callback;
-    /** @var callable[] */
-    private array $middlewares;
-
-    function __construct($callback, array $middlewares)
-    {
-        $this->callback = $callback;
-        $this->middlewares = $middlewares;
-    }
+    /**
+     * @param callable $callback
+     * @param callable[] $middlewares
+     */
+    function __construct(
+        private $callback,
+        private array $middlewares
+    ) {}
 
     function __invoke(...$args)
     {

@@ -22,15 +22,13 @@ class ImageException extends \RuntimeException
     const RESIZE_FAILED = 'resize-failed';
     const WRITE_FAILED = 'write-failed';
 
-    private string $reasonCode;
-    /** @var string[] */
-    private ?array $userFriendlyMessageArgs;
-    private ?string $additionalInformation;
-
+    /**
+     * @param string[] $userFriendlyMessageArgs
+     */
     function __construct(
-        string $reasonCode,
-        ?array $userFriendlyMessageArgs = null,
-        ?string $additionalInformation = null,
+        private string $reasonCode,
+        private ?array $userFriendlyMessageArgs = null,
+        private ?string $additionalInformation = null,
         ?\Throwable $previous = null
     ) {
         parent::__construct(
@@ -42,10 +40,6 @@ class ImageException extends \RuntimeException
             0,
             $previous
         );
-
-        $this->reasonCode = $reasonCode;
-        $this->userFriendlyMessageArgs = $userFriendlyMessageArgs;
-        $this->additionalInformation = $additionalInformation;
     }
 
     function getReasonCode(): string

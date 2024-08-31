@@ -9,7 +9,6 @@ use Sunlight\User;
 
 class PageTreeFilter implements TreeFilterInterface
 {
-    private array $options;
     private string $sql;
 
     /**
@@ -29,7 +28,7 @@ class PageTreeFilter implements TreeFilterInterface
      *     check_public?: bool,
      * } $options see description
      */
-    function __construct(array $options)
+    function __construct(private array $options)
     {
         // defaults
         $options += [

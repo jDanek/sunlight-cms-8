@@ -37,16 +37,13 @@ abstract class Plugin implements CallbackObjectInterface
         'remove' => Action\RemoveAction::class,
     ];
 
-    protected PluginData $data;
-    protected PluginManager $manager;
     private ?ConfigurationFile $config = null;
     private ?NamespacedCache $cache = null;
 
-    function __construct(PluginData $data, PluginManager $manager)
-    {
-        $this->data = $data;
-        $this->manager = $manager;
-    }
+    function __construct(
+        protected PluginData $data,
+        protected PluginManager $manager
+    ) {}
 
     static function isLoaded(): bool
     {

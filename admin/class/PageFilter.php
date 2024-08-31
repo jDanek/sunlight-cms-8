@@ -8,14 +8,10 @@ use Sunlight\User;
 
 class PageFilter implements TreeFilterInterface
 {
-    private ?int $type = null;
-    private bool $checkPrivilege;
-
-    function __construct(?int $type = null, bool $checkPrivilege = false)
-    {
-        $this->type = $type;
-        $this->checkPrivilege = $checkPrivilege;
-    }
+    function __construct(
+        private ?int $type = null,
+        private bool $checkPrivilege = false
+    ) {}
 
     function filterNode(array $node, TreeReader $reader): bool
     {

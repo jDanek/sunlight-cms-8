@@ -25,18 +25,12 @@ class Password
     /** Error - password does not match the check password */
     const ERR_CHECK_NO_MATCH = 'check_no_match';
 
-    private string $algo;
-    private int $iterations;
-    private string $salt;
-    private string $hash;
-
-    function __construct(string $algo, int $iterations, string $salt, string $hash)
-    {
-        $this->algo = $algo;
-        $this->iterations = $iterations;
-        $this->salt = $salt;
-        $this->hash = $hash;
-    }
+    function __construct(
+        private string $algo,
+        private int $iterations,
+        private string $salt,
+        private string $hash
+    ) {}
 
     /**
      * Parse a stored password

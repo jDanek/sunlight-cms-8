@@ -11,16 +11,13 @@ use Sunlight\Core;
  */
 class ScriptCallback
 {
-    public string $path;
     /** @var callable|null */
     private $callback;
-    private ?CallbackObjectInterface $object;
 
-    function __construct(string $path, ?CallbackObjectInterface $object)
-    {
-        $this->path = $path;
-        $this->object = $object;
-    }
+    function __construct(
+        private string $path,
+        private ?CallbackObjectInterface $object
+    ) {}
 
     function __invoke(...$args)
     {

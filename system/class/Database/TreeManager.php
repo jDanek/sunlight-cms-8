@@ -6,12 +6,6 @@ use Sunlight\Database\Database as DB;
 
 class TreeManager
 {
-    private string $table;
-    private string $idColumn;
-    private string $parentColumn;
-    private string $levelColumn;
-    private string $depthColumn;
-
     /**
      * @param string $table table name (no prefix)
      * @param string|null $idColumn identifier column name
@@ -20,14 +14,13 @@ class TreeManager
      * @param string|null $depthColumn depth column name
      */
     function __construct(
-        string  $table,
-        ?string $idColumn = null,
-        ?string $parentColumn = null,
-        ?string $levelColumn = null,
-        ?string $depthColumn = null
+        private string  $table,
+        private ?string $idColumn = null,
+        private ?string $parentColumn = null,
+        private ?string $levelColumn = null,
+        private ?string $depthColumn = null
     ) {
-        $this->table = $table;
-        $this->idColumn = $idColumn ??'id';
+        $this->idColumn = $idColumn ?? 'id';
         $this->parentColumn = $parentColumn ?? 'node_parent';
         $this->levelColumn = $levelColumn ?? 'node_level';
         $this->depthColumn = $depthColumn ?? 'node_depth';

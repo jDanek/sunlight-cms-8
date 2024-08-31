@@ -276,16 +276,12 @@ abstract class Errors
 class StepRunner
 {
     private ?Step $current = null;
-    /** @var Step[] */
-    private array $steps;
 
     /**
      * @param Step[] $steps
      */
-    function __construct(array $steps)
+    function __construct(private array $steps)
     {
-        $this->steps = $steps;
-
         // map step numbers
         $stepNumber = 0;
 
@@ -395,12 +391,9 @@ abstract class Step
     protected array $vars = [];
     protected bool $submitted = false;
     protected array $errors = [];
-    protected ConfigurationFile $config;
 
-    function __construct(ConfigurationFile $config)
-    {
-        $this->config = $config;
-    }
+    function __construct(protected ConfigurationFile $config)
+    {}
 
     abstract function getMainLabelKey(): string;
 

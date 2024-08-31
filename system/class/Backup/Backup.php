@@ -18,7 +18,6 @@ use Sunlight\Util\Zip;
 class Backup
 {
     private \ZipArchive $zip;
-    private string $path;
     private string $dataPath = 'data';
     private string $dbDumpPath = 'database.sql';
     private ?string $metadataPath = 'backup.json';
@@ -38,10 +37,9 @@ class Backup
     private ?string $dbDumpPrefix = null;
     private ?string $dbDumpEngine = null;
 
-    function __construct(string $path)
+    function __construct(private string $path)
     {
         $this->zip = new \ZipArchive();
-        $this->path = $path;
     }
 
     function __destruct()

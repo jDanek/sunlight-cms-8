@@ -14,12 +14,8 @@ use Sunlight\Util\Filesystem;
 
 class BackupRestorer
 {
-    private Backup $backup;
-
-    function __construct(Backup $backup)
-    {
-        $this->backup = $backup;
-    }
+    function __construct(private Backup $backup)
+    {}
 
     /**
      * Validate the backup

@@ -9,14 +9,10 @@ use Sunlight\Util\TemporaryFile;
 
 class UserData
 {
-    private int $userId;
-    private array $options;
-
-    function __construct(int $userId, array $options)
-    {
-        $this->userId = $userId;
-        $this->options = $options;
-    }
+    function __construct(
+        private int $userId,
+        private array $options
+    ) {}
 
     function generate(): TemporaryFile
     {

@@ -4,14 +4,11 @@ namespace Sunlight\Search;
 
 abstract class SearchSource
 {
-    private string $key;
     private bool $enabledByDefault = true;
     private int $limit = 100;
 
-    function __construct(string $key)
-    {
-        $this->key = $key;
-    }
+    function __construct(private string $key)
+    {}
 
     function getKey(): string
     {

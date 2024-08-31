@@ -12,7 +12,6 @@ use Sunlight\Util\Json;
  */
 class Repository
 {
-    private string $composerJsonPath;
     private ?string $directory = null;
     private ?\stdClass $package = null;
     private ?string $vendorPath = null;
@@ -20,10 +19,8 @@ class Repository
     private ?array $installedPackages = null;
     private ?array $classMap = null;
 
-    function __construct(string $composerJsonPath)
-    {
-        $this->composerJsonPath = $composerJsonPath;
-    }
+    function __construct(private string $composerJsonPath)
+    {}
 
     function getComposerJsonPath(): string
     {

@@ -16,18 +16,13 @@ class PluginLoader
 {
     private const PLUGIN_DIR_PATTERN = '{' . Plugin::NAME_PATTERN . '$}AD';
 
-    private PluginConfigStore $configStore;
-    /** @var array<string, PluginType> */
-    private array $types;
-
     /**
      * @param array<string, PluginType> $types
      */
-    function __construct(PluginConfigStore $configStore, array $types)
-    {
-        $this->configStore = $configStore;
-        $this->types = $types;
-    }
+    function __construct(
+        private PluginConfigStore $configStore,
+        private array $types
+    ) {}
 
     /**
      * Load plugin data from the filesystem

@@ -14,18 +14,15 @@ use Sunlight\Xsrf;
 
 abstract class PluginAction extends Action
 {
-    protected Plugin $plugin;
-
     /**
      * @throws \RuntimeException if instantiated outside of admin environment
      */
-    function __construct(Plugin $plugin)
+    function __construct(protected Plugin $plugin)
     {
         if (Core::$env !== Core::ENV_ADMIN) {
             throw new \RuntimeException('Plugin actions require administration environment');
         }
 
-        $this->plugin = $plugin;
         $this->setCatchExceptions(true);
         $this->setRenderExceptions(true);
     }

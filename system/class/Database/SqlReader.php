@@ -21,13 +21,10 @@ class SqlReader
         ['/*', '*/'],
     ];
 
-    private string $input;
     private string $delimiter = ';';
 
-    function __construct(string $input)
-    {
-        $this->input = $input;
-    }
+    function __construct(private string $input)
+    {}
 
     /**
      * Create from a file

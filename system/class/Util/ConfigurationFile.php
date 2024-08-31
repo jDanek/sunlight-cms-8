@@ -7,15 +7,12 @@ namespace Sunlight\Util;
  */
 class ConfigurationFile implements \ArrayAccess
 {
-    private string $path;
-    private array $defaults;
     private ?array $data = null;
 
-    function __construct(string $path, array $defaults = [])
-    {
-        $this->path = $path;
-        $this->defaults = $defaults;
-    }
+    function __construct(
+        private string $path,
+        private array $defaults = []
+    ) {}
 
     /**
      * Save configuration to the file

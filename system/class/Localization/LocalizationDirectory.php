@@ -9,19 +9,16 @@ use Sunlight\Core;
  */
 class LocalizationDirectory extends LocalizationDictionary
 {
-    private string $dir;
-    private ?array $availableLanguages;
     private bool $isLoaded = false;
 
     /**
      * @param string $dir path to the directory containing the localization dictionaries (without a trailing slash)
      * @param array|null $availableLanguages list of available languages (saves an is_file() check)
      */
-    function __construct(string $dir, array $availableLanguages = null)
-    {
-        $this->dir = $dir;
-        $this->availableLanguages = $availableLanguages;
-    }
+    function __construct(
+        private string $dir,
+        private ?array $availableLanguages = null
+    ) {}
 
     function getDir(): string
     {

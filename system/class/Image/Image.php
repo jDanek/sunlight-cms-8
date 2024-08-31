@@ -6,17 +6,14 @@ use Sunlight\Util\Filesystem;
 
 final class Image
 {
-    /** @var \GdImage|resource */
-    public $resource;
-    public int|false $width;
-    public int|false $height;
-
     /**
      * @param \GdImage|resource $resource
      */
-    function __construct($resource, ?int $width = null, ?int $height = null)
-    {
-        $this->resource = $resource;
+    function __construct(
+        public $resource,
+        public int|false|null $width = null,
+        public int|false|null $height = null
+    ) {
         $this->width = $width ?? imagesx($resource);
         $this->height = $height ?? imagesy($resource);
     }

@@ -13,21 +13,16 @@ class Message
     const WARNING = 'warn';
     const ERROR = 'err';
 
-    private string $type;
-    private string $message;
-    private bool $isHtml;
-
     /**
      * @param string $type see class constants
      * @param string $message the message
      * @param bool $isHtml display the message should be rendered as html (unescaped) 1/0
      */
-    function __construct(string $type, string $message, bool $isHtml = false)
-    {
-        $this->type = $type;
-        $this->message = $message;
-        $this->isHtml = $isHtml;
-    }
+    function __construct(
+        private string $type,
+        private string $message,
+        private bool $isHtml = false
+    ) {}
 
     /**
      * Render a message

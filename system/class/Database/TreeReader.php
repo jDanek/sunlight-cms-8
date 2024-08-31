@@ -6,13 +6,6 @@ use Sunlight\Database\Database as DB;
 
 class TreeReader
 {
-    private string $table;
-    private string $childrenIndex;
-    private string $idColumn;
-    private string $parentColumn;
-    private string $levelColumn;
-    private string $depthColumn;
-
     /**
      * @param string $table table name (no prefix)
      * @param string|null $childrenIndex name of the array index which will hold node children
@@ -22,14 +15,13 @@ class TreeReader
      * @param string|null $depthColumn depth column name
      */
     function __construct(
-        string  $table,
-        ?string $childrenIndex = null,
-        ?string $idColumn = null,
-        ?string $parentColumn = null,
-        ?string $levelColumn = null,
-        ?string $depthColumn = null
+        private string  $table,
+        private ?string $childrenIndex = null,
+        private ?string $idColumn = null,
+        private ?string $parentColumn = null,
+        private ?string $levelColumn = null,
+        private ?string $depthColumn = null
     ) {
-        $this->table = $table;
         $this->childrenIndex = $childrenIndex ?? 'children';
         $this->idColumn = $idColumn ?? 'id';
         $this->parentColumn = $parentColumn ?? 'node_parent';

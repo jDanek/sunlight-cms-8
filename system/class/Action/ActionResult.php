@@ -6,16 +6,14 @@ use Sunlight\Message;
 
 class ActionResult
 {
-    private ?bool $result;
-    /** @var Message[] */
-    private Message|array|null $messages;
-    private ?string $output;
-
     /**
      * @param Message|Message[]|null $messages
      */
-    function __construct(?bool $result = null, Message|array $messages = null, ?string $output = null)
-    {
+    function __construct(
+        private ?bool $result = null,
+        private Message|array|null $messages = null,
+        private ?string $output = null
+    ) {
         if ($messages !== null) {
             if (!is_array($messages)) {
                 $messages = [$messages];
@@ -24,9 +22,7 @@ class ActionResult
             $messages = [];
         }
 
-        $this->result = $result;
         $this->messages = $messages;
-        $this->output = $output;
     }
 
     /**
