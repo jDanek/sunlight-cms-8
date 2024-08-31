@@ -102,7 +102,7 @@ class Paginator
             if ($pages > 1) {
                 $link_suffix = _e($options['link_suffix']);
 
-                if (strpos($url, '?') === false) {
+                if (!str_contains($url, '?')) {
                     $url .= '?';
                 } else {
                     $url .= '&';

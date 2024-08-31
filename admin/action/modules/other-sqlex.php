@@ -121,7 +121,7 @@ if (!empty($queries)) {
                 if ($row[$j] === null) {
                     // null
                     $output .= '<code class="text-warning">NULL</code>';
-                } elseif (strpos($row[$j], "\n") !== false) {
+                } elseif (str_contains($row[$j], "\n")) {
                     // string with newlines
                     $output .= Form::textarea(null, $row[$j], ['cols' => 60, 'rows' => max(10, substr_count($row[$j], "\n")), 'readonly' => true]);
                 } elseif (strlen($row[$j]) > 64) {

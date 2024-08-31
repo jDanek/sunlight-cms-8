@@ -67,7 +67,7 @@ class LocalizationDictionary
      */
     function registerSubDictionary(string $prefix, LocalizationDictionary $subDictionary): void
     {
-        if (Core::$debug && strpos($prefix, '.') !== false) {
+        if (Core::$debug && str_contains($prefix, '.')) {
             throw new \InvalidArgumentException(sprintf('Sub-dictionary prefix "%s" must not contain a dot', $prefix));
         }
 

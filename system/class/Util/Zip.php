@@ -47,7 +47,7 @@ abstract class Zip
         string $targetPath,
         int $bigFileThreshold = self::DEFAULT_BIG_FILE_THRESHOLD
     ): void {
-        if (substr($stat['name'], -1) === '/') {
+        if (str_ends_with($stat['name'], '/')) {
             // empty dir
             return;
         }

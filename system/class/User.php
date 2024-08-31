@@ -960,7 +960,7 @@ abstract class User
         }
 
         // load user
-        if (strpos($username, '@') !== false) {
+        if (str_contains($username, '@')) {
             $cond = 'u.email=' . DB::val($username);
         } else {
             $cond = 'u.username=' . DB::val($username) . ' OR u.publicname=' . DB::val($username);

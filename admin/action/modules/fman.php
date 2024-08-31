@@ -330,7 +330,7 @@ if ($continue) {
             case 'move':
                 $newdir = Request::post('param');
 
-                if (substr($newdir, -1, 1) != '/') {
+                if (!str_ends_with($newdir, '/')) {
                     $newdir .= '/';
                 }
 

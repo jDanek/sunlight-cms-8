@@ -42,7 +42,7 @@ abstract class UrlHelper
         }
 
         return $url
-            . (strpos($url, '?') === false ? '?' : '&')
+            . (!str_contains($url, '?') ? '?' : '&')
             . $params;
     }
 

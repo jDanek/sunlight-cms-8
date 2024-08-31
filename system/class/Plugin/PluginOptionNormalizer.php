@@ -16,7 +16,7 @@ abstract class PluginOptionNormalizer
             self::fail('cannot be empty');
         }
 
-        if (strpos($class, '\\') !== false) {
+        if (str_contains($class, '\\')) {
             // FQCN
             return $class;
         }
@@ -180,12 +180,12 @@ abstract class PluginOptionNormalizer
 
         foreach ($dependencies as $dependency => $version) {
             // 8.0.x compatibility
-            if (strpos($dependency, '/') !== false) {
+            if (str_contains($dependency, '/')) {
                 $dependency = strtr($dependency, '/', '.');
             }
 
             // prefix dependency by current type if none is specified
-            if (strpos($dependency, '.') === false) {
+            if (!str_contains($dependency, '.')) {
                 $dependency = "{$plugin->type}.{$dependency}";
             }
 
