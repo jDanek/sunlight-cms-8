@@ -15,7 +15,7 @@ class ScriptCallback
     private $callback;
 
     function __construct(
-        private string $path,
+        public string $path,
         private ?CallbackObjectInterface $object
     ) {}
 
