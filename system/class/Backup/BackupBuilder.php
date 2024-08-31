@@ -269,9 +269,7 @@ class BackupBuilder
 
         if ($this->fullBackup) {
             foreach ($this->staticPathList as $path) {
-                $backup->addPath($path, function ($dataPath) {
-                    return $this->filterPath($dataPath, true);
-                });
+                $backup->addPath($path, fn($dataPath) => $this->filterPath($dataPath, true));
             }
 
             foreach ($this->emptyDirPathList as $path) {
@@ -283,9 +281,7 @@ class BackupBuilder
 
                 foreach ($paths as $path) {
                     if ($enabled) {
-                        $backup->addPath($path, function ($dataPath) {
-                            return $this->filterPath($dataPath, false, true);
-                        });
+                        $backup->addPath($path, fn($dataPath) => $this->filterPath($dataPath, false, true));
                     } elseif (is_dir(SL_ROOT . $path)) {
                         $backup->addEmptyDirectory($path);
                     }
@@ -299,9 +295,7 @@ class BackupBuilder
             foreach ($this->dynamicPathMap as $name => $paths) {
                 if ($this->isDynamicPathEnabled($name)) {
                     foreach ($paths as $path) {
-                        $backup->addPath($path, function ($dataPath) {
-                            return $this->filterPath($dataPath, false, true);
-                        });
+                        $backup->addPath($path, fn($dataPath) => $this->filterPath($dataPath, false, true));
                     }
                 }
             }

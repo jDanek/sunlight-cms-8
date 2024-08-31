@@ -31,7 +31,7 @@ class Color
         if (preg_match('{#([0-9a-f]{3,6})$}ADi', $color, $match)) {
             return new self(
                 strlen($match[1]) === 3
-                    ? array_map(function ($hexit) { return hexdec($hexit . $hexit); }, str_split($match[1]))
+                    ? array_map(fn($hexit) => hexdec($hexit . $hexit), str_split($match[1]))
                     : array_map('hexdec', str_split($match[1], 2))
             );
         }

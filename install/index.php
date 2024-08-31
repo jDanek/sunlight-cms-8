@@ -1018,9 +1018,7 @@ Now you can log into the administration (with the account set up during installa
     {
         $prefix = $this->config['db.prefix'] . '_';
 
-        return array_map(function ($baseTableName) use ($prefix) {
-            return $prefix . $baseTableName;
-        }, self::$baseTableNames);
+        return array_map(fn($baseTableName) => $prefix . $baseTableName, self::$baseTableNames);
     }
 }
 

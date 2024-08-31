@@ -67,7 +67,7 @@ abstract class CallbackHandler
             $callable = new MiddlewareCallback(
                 $callable,
                 array_map(
-                    function ($definition) use ($object) { return self::fromArray($definition, $object); },
+                    fn($definition) => self::fromArray($definition, $object),
                     $definition['middlewares']
                 )
             );

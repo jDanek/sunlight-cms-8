@@ -165,7 +165,7 @@ $editable_settings = [
     'paging' => [
         'items' => [
             ['name' => 'pagingmode', 'format' => 'int', 'choices' => $pagingmode_choices],
-            ['name' => 'showpages', 'format' => 'int', 'transform_to' => function ($v) { return $v * 2 + 1; }, 'transform_back' => function ($v) { return (int) max(1, abs(($v - 1) / 2)); }],
+            ['name' => 'showpages', 'format' => 'int', 'transform_to' => fn($v) => $v * 2 + 1, 'transform_back' => fn($v) => (int) max(1, abs(($v - 1) / 2))],
             ['name' => 'commentsperpage', 'format' => 'int', 'min_value' => 1],
             ['name' => 'messagesperpage', 'format' => 'int', 'min_value' => 1],
             ['name' => 'articlesperpage', 'format' => 'int', 'min_value' => 1],
@@ -177,14 +177,14 @@ $editable_settings = [
     'iplog' => [
         'items' => [
             ['name' => 'antispamtimeout', 'format' => 'int', 'min_value' => 0],
-            ['name' => 'postadmintime', 'format' => 'int', 'transform_to' => function ($v) { return $v / 60; }, 'transform_back' => function ($v) { return max(0, $v * 60); }],
+            ['name' => 'postadmintime', 'format' => 'int', 'transform_to' => fn($v) => $v / 60, 'transform_back' => fn($v) => max(0, $v * 60)],
             ['name' => 'maxloginattempts', 'format' => 'int', 'min_value' => 1],
-            ['name' => 'maxloginexpire', 'format' => 'int', 'transform_to' => function ($v) { return $v / 60; }, 'transform_back' => function ($v) { return max(0, $v * 60); }],
-            ['name' => 'artviewexpire', 'format' => 'int', 'transform_to' => function ($v) { return $v / 60; }, 'transform_back' => function ($v) { return max(0, $v * 60); }],
-            ['name' => 'artrateexpire', 'format' => 'int', 'transform_to' => function ($v) { return $v / 60; }, 'transform_back' => function ($v) { return max(0, $v * 60); }],
-            ['name' => 'pollvoteexpire', 'format' => 'int', 'transform_to' => function ($v) { return $v / 60; }, 'transform_back' => function ($v) { return max(0, $v * 60); }],
-            ['name' => 'accactexpire', 'format' => 'int', 'transform_to' => function ($v) { return $v / 60; }, 'transform_back' => function ($v) { return max(0, $v * 60); }],
-            ['name' => 'lostpassexpire', 'format' => 'int', 'transform_to' => function ($v) { return $v / 60; }, 'transform_back' => function ($v) { return max(0, $v * 60); }],
+            ['name' => 'maxloginexpire', 'format' => 'int', 'transform_to' => fn($v) => $v / 60, 'transform_back' => fn($v) => max(0, $v * 60)],
+            ['name' => 'artviewexpire', 'format' => 'int', 'transform_to' => fn($v) => $v / 60, 'transform_back' => fn($v) => max(0, $v * 60)],
+            ['name' => 'artrateexpire', 'format' => 'int', 'transform_to' => fn($v) => $v / 60, 'transform_back' => fn($v) => max(0, $v * 60)],
+            ['name' => 'pollvoteexpire', 'format' => 'int', 'transform_to' => fn($v) => $v / 60, 'transform_back' => fn($v) => max(0, $v * 60)],
+            ['name' => 'accactexpire', 'format' => 'int', 'transform_to' => fn($v) => $v / 60, 'transform_back' => fn($v) => max(0, $v * 60)],
+            ['name' => 'lostpassexpire', 'format' => 'int', 'transform_to' => fn($v) => $v / 60, 'transform_back' => fn($v) => max(0, $v * 60)],
         ],
     ],
     'filesystem' => [
@@ -212,7 +212,7 @@ $editable_settings = [
     'logger' => [
         'items' => [
             ['name' => 'log_level', 'format' => 'int', 'choices' => [-1 => _lang('admin.settings.logger.log_level.disabled')] + Logger::LEVEL_NAMES],
-            ['name' => 'log_retention', 'format' => 'text', 'transform_back' => function ($v) { return ctype_digit($v) ? $v : ''; }],
+            ['name' => 'log_retention', 'format' => 'text', 'transform_back' => fn($v) => ctype_digit($v) ? $v : ''],
         ],
     ],
 ];

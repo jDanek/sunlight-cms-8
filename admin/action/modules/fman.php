@@ -172,9 +172,7 @@ $decodeFilename = function ($value, $encoded = true) {
     return basename($value);
 };
 
-$encodeFilename = function ($value) {
-    return base64_encode($value);
-};
+$encodeFilename = fn($value) => base64_encode($value);
 
 $getSelectedFiles = function () use ($decodeFilename) {
     return array_map($decodeFilename,  Arr::filterKeys($_POST, 'file_'));

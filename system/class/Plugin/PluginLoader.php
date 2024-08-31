@@ -502,9 +502,7 @@ class PluginLoader
     private function resolveAutoloadForComposerPackageClassmap(array &$autoload, string $packageDir, array $classMap, array $generatedClassMap): void
     {
         $prefixes = array_map(
-            function ($path) use ($packageDir) {
-                return Filesystem::parsePath(Filesystem::normalizeWithBasePath($packageDir, $path), true, true);
-            },
+            fn($path) => Filesystem::parsePath(Filesystem::normalizeWithBasePath($packageDir, $path), true, true),
             $classMap
         );
 

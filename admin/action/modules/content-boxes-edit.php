@@ -70,7 +70,7 @@ if (isset($_POST['box_edit'])) do {
         'page_ids' => StringHelper::cut(
             implode(
                 ',',
-                array_filter(array_map('intval', (array) Request::post('page_ids', [], true)), function ($id) { return $id >= 1; })
+                array_filter(array_map('intval', (array) Request::post('page_ids', [], true)), fn($id) => $id >= 1)
             ),
             DB::MAX_TEXT_LENGTH
         ) ?: null,

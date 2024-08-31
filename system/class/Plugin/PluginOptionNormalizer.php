@@ -128,7 +128,7 @@ abstract class PluginOptionNormalizer
     {
         $callbackProps = array_filter(
             array_intersect_key($callback->toArray(), ['method' => true, 'callback' => true, 'script' => true]),
-            function ($value) { return $value !== null; }
+            fn($value) => $value !== null
         );
 
         if (count($callbackProps) > 1) {
